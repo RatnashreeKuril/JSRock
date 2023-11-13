@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' href='css/styles.css'>
+<script src='js/JSRock.js'></script>
+<script>
+// user written functions
+
+function abBeforeOpening()
+{
+alert("Modal with ab is about to be opened");
+return true;
+}
+function abOpened()
+{
+alert("Modal with ab opened");
+}
+function abBeforeClosing()
+{
+alert("Modal with ab is about to be closed");
+return true;
+}
+function abClosed()
+{
+alert("Modal with ab closed");
+}
+
+
+
+function createModal1()
+{
+$$$.modals.show("modal1");
+}
+
+function xyz()
+{
+var xx=document.getElementById("myTextBox");
+alert(xx);
+} 
+
+
+</script>
+</head>
+<body>
+<div accordian="true">
+<h3>Heading 1</h3>
+<div>
+1 whatever whatever
+2 whatever whatever
+3 whatever whatever
+4 whatever whatever
+5 whatever whatever
+6 whatever whatever
+7 whatever whatever
+</div>
+
+<h3>Heading 2</h3>
+<div>
+11 whatever whatever
+22 whatever whatever
+33 whatever whatever
+44 whatever whatever
+55 whatever whatever
+66 whatever whatever
+77 whatever whatever
+</div>
+
+<h4>Heading 3</h4>
+<div>
+111 whatever whatever
+222 whatever whatever
+333 whatever whatever
+444 whatever whatever
+555 whatever whatever
+666 whatever whatever
+777 whatever whatever
+</div>
+</div>
+
+<div id='mymy1' accordian="true">
+<h2>Cool 1</h2>
+<div>
+1 Cool cool
+2  Cool cool
+3  Cool cool
+4  Cool cool
+</div>
+
+<h6>Cool 2</h6>
+<div>
+11 Cool cool
+22 Cool cool
+33 Cool cool
+44 Cool cool
+55 Cool cool
+66 Cool cool
+</div>
+
+<h1>Cool 3</h1>
+<div>
+111 Cool cool
+222 Cool cool
+333 Cool cool
+444 Cool cool
+555 Cool cool
+</div>
+</div>
+<button onclick='createModal1()'>Show First Modal</button>
+<div id='modal1' style='display:none' forModal='true' size="750x400" header="Some heading" footer="Some footer" maskColor="#808080" modalBackgroundColor="#E6E6FA" closeButton="true" 
+beforeOpening="abBeforeOpening()"
+afterOpening="abOpened()"
+beforeClosing="abBeforeClosing()"
+afterClosing="abClosed()">
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+<input type='text' id='myTextBox' value='Great'>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+</div>
+<button onclick='xyz()'>Cool button</button>
+
+
+</body>
+</html>

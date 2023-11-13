@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='css/styles.css'>
+<script>
+// This will finally be part of TMJRock Javascript Library
+
+function map()
+{
+var key;
+var value;
+}
+
+
+function $$$(parameter){
+this.parameter=parameter;
+this.keyValueMap=[];
+this.ptr;
+var elementClone;
+this.fillComboBox=function(obj){
+var elementId;
+var designationComboBox=document.getElementById(this.parameter);
+var designations=obj.dataSource;
+var firstOption=obj.firstOption;
+var option;
+if(firstOption!=null)
+{
+option=document.createElement("option");
+option.value=firstOption.value;
+option.text=firstOption.text;
+option.selected=true;
+designationComboBox.appendChild(option);
+}
+var value=obj.value;
+var text=obj.text;
+for(var i=0;i<designations.length;i++)
+{
+option=document.createElement("option");
+if(value=='code') option.value=designations[i].code;
+if(text=='title') option.text=designations[i].title;
+designationComboBox.appendChild(option);
+}
+};
+this.isValid=function(obj){
+var valid=true;
+var elements;
+var error=null;
+var errorSection=null;
+var element;
+
+
+
+
+
+for(var k=0;k<keyValueMap.length;k++)
+{
+errorSection=null;
+var m=keyValueMap[k];
+elements=document.getElementsByName(m.key);
+
+// Input field starts here
+if(elements[0] instanceof HTMLInputElement)
+{
+error="";
+if(elements[0].type=='text')
+{
+element=elements[0];
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+if(element.value==null || element.value.trim().length==0)
+{
+error="required";
+valid=false;
+}
+}
+}
+if(m.value[i].key=="max-length")
+{
+var maxLen=m.value[i].value;
+var len=element.value.trim().length;
+if(len>maxLen)
+{
+error="max-length";
+valid=false;
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+} // inner for loop
+} // text input
+
+error="";
+if(elements[0].type=='radio')
+{
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+var checked=false;
+for(var e=0;e<elements.length;e++)
+{
+if(elements[e].checked==true) 
+{
+checked=true;
+break;
+}
+}
+if(checked==false)
+{
+error="required";
+valid=false;
+}
+
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+}
+}
+}
+} // inner for loop
+
+
+} // radio input
+
+
+/*
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+*/
+error="";
+if(elements[0].type=='checkbox')
+{
+element=elements[0];
+var displayAlert=false;
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required-state")
+{
+if(m.value[i].value=='true')
+{
+if(element.checked==false)
+{
+error="required-state";
+valid=false;
+}
+}
+} 
+if(m.value[i].key=="display-alert")
+{
+if(m.value[i].value=='true') displayAlert=true;
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+
+if(error==key)
+{
+if(displayAlert==true)
+{
+alert(value);
+}
+}
+}
+}
+} // inner for loop
+} // checkbox
+
+
+
+
+
+} 
+
+// Input field ends here
+
+// Text area starts here
+if(elements[0] instanceof HTMLTextAreaElement)
+{
+error="";
+element=elements[0];
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+if(element.value==null || element.value.trim().length==0)
+{
+error="required";
+valid=false;
+}
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+} // inner for loop 
+}
+// Text area ends here
+
+
+// HTML select element starts here
+if(elements[0] instanceof HTMLSelectElement)
+{
+element=elements[0];
+error="";
+var invalidValue=-1;
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="invalid")
+{
+invalidValue=m.value[i].value;
+if(element.value==invalidValue)
+{
+error="invalid";
+valid=false;
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+
+} // inner for loop
+}
+// HTML select element ends here
+
+
+
+
+
+
+
+} // outer for loop
+
+return valid;
+};
+
+this.parseData=function(str)
+{
+		
+this.ptr=0;
+var j,i,f,ep,cm;
+i=0;
+f=-1;
+var splits=[];
+while(f<str.length)
+{
+j=str.indexOf("},",f+1);
+if(j==-1)
+{
+j=str.lastIndexOf("}")+1;
+
+}
+else j=j+1;
+
+splits[i]=str.substring(f+1,j);
+
+i++;
+f=j;
+}
+
+
+
+j=0;
+i=0;
+f=-1;
+var substr;
+for(var g=0;g<splits.length;g++)
+{
+substr=splits[g];
+j=0;
+i=0;
+f=-1;
+while(j<substr.length && f<substr.length)
+{
+j=substr.indexOf(":",f+1);
+if(substr.charAt(j+1)=="{")
+{
+ep=substr.lastIndexOf("}");
+cm=new map();
+cm.key=substr.substring(f+2,j-1);
+process(cm,substr.substring(j+2,ep));
+keyValueMap[ptr]=cm;
+ptr++;
+f=ep+1;
+}
+else
+{
+cm=new map();
+cm.key=substr.substring(f+2,j-1);
+f=substr.indexOf(",",j);
+if(f==-1) f=substr.length;
+cm.value=substr.substring(j+1,f);
+keyValueMap[ptr]=cm;
+ptr++;
+
+}
+
+}// loop ends
+
+}
+
+
+
+};
+
+
+
+
+
+return this;
+}
+
+function process(m,str)
+{
+var marray=[];
+var i,f,j,ep,cm;
+j=0;
+i=0;
+f=-1;
+while(j<str.length && f<str.length)
+{
+j=str.indexOf(":",f+1);
+if(str.charAt(j+1)=="{")
+{
+ep=str.lastIndexOf("}");
+cm=new map();
+cm.key=str.substring(f+2,j-1);
+process(cm,str.substring(j+2,ep));
+marray[i]=cm;
+i++;
+f=ep+1;
+}
+else
+{
+cm=new map();
+cm.key=str.substring(f+2,j-1);
+f=str.indexOf(",",j);
+if(f==-1) f=str.length;
+cm.value=str.substring(j+1,f);
+marray[i]=cm;
+i++;
+}
+m.value=marray;
+} 
+
+}
+
+
+
+
+
+$$$.modal=function(elementId){
+this.elementId=elementId;
+var element=document.getElementById(elementId);
+elementClone=element.cloneNode(true);
+element.remove();
+var modal=document.getElementById('modal');
+var whatever=document.getElementById('whatever')
+
+
+
+whatever.appendChild(elementClone);
+var opaqueWindow=document.getElementById('opaqueWindow');
+opaqueWindow.style.visibility='visible';
+
+
+
+};
+$$$.getElementId=function(){
+return this.elementId;
+};
+
+function closeModal()
+{
+var elementId=$$$.getElementId();
+var element=document.getElementById(elementId);
+element.remove();
+document.getElementById('opaqueWindow').style.visibility='hidden';
+document.body.appendChild(element);
+}
+
+
+
+
+
+// TMJRock Javascript Library code ends here
+
+// TMJRock user script starts here
+function doSomething()
+{
+return $$$("someForm").isValid({
+"nm": {
+"required" : true,
+"max-length": 20,
+"error-pane" : "nmErrorSection",
+"error":{
+"required":"Name required",
+"max-length":"Name cannot exceed 20 characters"
+}
+
+},
+
+
+
+"ad":{
+"required":true,
+"error-pane" : "adErrorSection",
+"error":{
+"required":"Address required",
+}
+
+},
+"ct":{
+"invalid":-1,
+"error-pane":"ctErrorSection",
+"error":{
+"invalid":"Select city",
+}
+},
+"gender":{
+"required": true,
+"error-pane" : "genderErrorSection",
+"error":{
+"required":"Select gender",
+}
+},
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+
+
+});
+}
+
+// TMJRock user script ends here
+
+</script>
+</head>
+<body>
+
+<h1>TMJRock Validations</h1>
+<form id='someForm' onsubmit='return doSomething()' action='whatever'>
+Name <input type='text' name='nm' id='nm'>
+<span class='jsrock_error' id='nmErrorSection'></span><br><br>
+Address 
+<textarea name='ad' id='ad'></textarea>
+<span class='jsrock_error' id='adErrorSection'></span>
+<br><br>
+Select City
+<select id='ct' name='ct'>
+<option value='-1'>Select city</option>
+<option value='1'>Ujjain</option>
+<option value='2'>Dewas</option>
+<option value='3'>Indore</option>
+</select><span class='jsrock_error' id='ctErrorSection'></span>
+<br><br>
+Gender &nbsp;&nbsp;&nbsp;
+Male <input type='radio' name='gender' id='ml' value='M'>
+&nbsp;&nbsp;&nbsp;
+Female <input type='radio' name='gender' id='fe' value='F'>
+&nbsp;&nbsp;&nbsp;
+<span class='jsrock_error' id='genderErrorSection'></span>
+<br><br>
+<input type='checkbox' name='agree' id='ag' value='Y'>
+<br><br>
+<Button type='submit'>Register</button>
+</form>
+
+</body>
+</html>

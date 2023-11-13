@@ -1,0 +1,5267 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+// TMJRock part starts here
+function $$$(cid)
+{
+
+}
+$$$.ajax=function(jsonObject){
+if(!jsonObject["url"]) throw "url property is missing in call to json";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType should be of string type in call to ajax";
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+if(onSuccess) onSuccess(this.responseText);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+};
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+
+}// get part ends here
+if(methodType=="POST")
+{
+
+} 
+
+};
+
+
+
+
+
+
+// TMJRock part ends here
+
+
+
+function populateDesignations()
+{
+$$$.ajax({
+"url":"servletOne",
+"success" : function(responseData){
+var designations=JSON.parse(responseData);
+alert(designations);
+var designationsComboBox=document.getElementById("designationCode");
+var obj;
+for(var i=0;i<designations.length;i++)
+{
+obj=document.createElement("option");
+obj.value=designations[i].code;
+obj.text=designations[i].title;
+designationsComboBox.appendChild(obj);
+}
+},
+"failure" : function(){
+alert('some problem');
+}
+});
+
+
+
+
+
+}
+window.addEventListener('load',populateDesignations);
+</script>
+</head>
+<body>
+<h1>Get type request Example</h1>
+<select id='designationCode'>
+</select>
+<br>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// html function ends
+
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+
+}
+}
+// TMJRock part ends here
+
+function getDesignation()
+{
+let titleSpan=$$$("title");
+titleSpan.html("");
+let code=$$$("code").value();
+
+
+$$$.ajax({
+"url":"servletTwo?code="+encodeURI(code),
+"methodType":"GET",
+"success":function(responseData){
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.html(splits[1]);
+}
+
+},
+
+"failure":function(){
+alert('some problem');
+}
+});
+
+
+
+
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.innerHTML=splits[1];
+}
+
+}
+else
+{
+alert('some problem');
+}
+}
+};
+// In this example encodeURI is not required
+var requestURL="servletTwo?code="+encodeURI(code);
+xmlHttpRequest.open('GET',requestURL,true);
+xmlHttpRequest.send();
+}
+
+</script>
+</head>
+<body>
+<h1>Get type request with data Example</h1>
+Enter code <input type='text' id='code'>
+<button type='button' onclick='getDesignation()'>Get Designation</button><br>
+<br>
+Title <span id='title'></span>
+<br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// html function ends
+
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+}
+}
+// TMJRock part ends here
+
+function getDesignation()
+{
+let titleSpan=$$$("title");
+titleSpan.html("");
+let code=$$$("code").value();
+$$$.ajax({
+"url":"servletTwo",
+"data" : {
+"code" : code,
+"some1" : 10,
+"some2" : "Great"
+},
+"methodType":"GET",
+"success":function(responseData){
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.html(splits[1]);
+}
+
+},
+"failure":function(){
+alert('some problem');
+}
+});
+
+}
+
+</script>
+</head>
+<body>
+<h1>Get type request with data Example</h1>
+Enter code <input type='text' id='code'>
+<button type='button' onclick='getDesignation()'>Get Designation</button><br>
+<br>
+Title <span id='title'></span>
+<br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// html function ends
+
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+let jsonData={};
+let sendJSON=jsonObject["sendJSON"];
+if(!sendJSON) sendJSON=false;
+if((typeof sendJSON)!="boolean") throw "sendJSON property should be of boolean type in call to ajax";
+let queryString="";
+alert(sendJSON);
+if(jsonObject["data"])
+{
+if(sendJSON)
+{
+jsonData=jsonObject["data"];
+}
+else
+{
+queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+jsonData=jsonObject["data"];
+for(k in jsonData)
+{
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+alert(qsName);
+alert(qsValue);
+queryString=queryString+qsName+"="+qsValue;
+}
+alert(queryString);
+}
+
+}
+
+xmlHttpRequest.open('POST',url,true);
+if(sendJSON)
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(jsonData));
+}
+else
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xmlHttpRequest.send(queryString);
+}
+}
+}
+// TMJRock part ends here
+
+
+
+
+
+
+
+function saveEnquiry()
+{
+var firstName=$$$("firstName").value();
+var lastName=$$$("lastName").value();
+var age=$$$("age").value();
+var customer={
+"firstName" : firstName,
+"lastName" : lastName,
+"age" : age
+};
+
+var whatever=$$$("whatever");
+whatever.html("");
+
+$$$.ajax({
+"methodType":"POST",
+"url" : "servletThree",
+"data" : customer,
+"sendJSON" : false,
+"success" : function(responseData){
+/*
+var customer=JSON.parse(responseData);
+var a="First Name : "+customer.firstName+"<br>";
+a=a+"Last Name : "+customer.lastName+"<br>";
+a=a+"Age : "+customer.age;
+*/
+whatever.html(responseData);
+},
+"failure" : function(){
+alert('some problem');
+}
+});
+
+
+}
+</script>
+</head>
+<body>
+<h1>Post type request</h1>
+First name <input type='text' id='firstName'><br>
+Last name <input type='text' id='lastName'><br>
+Age <input type='text' id='age'><br>
+<button type='button' onclick='saveEnquiry()'>Save</button>
+<br>
+<div id='whatever'></div>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// value function ends
+
+this.fillComboBox=function(jsonObject)
+{
+if(this.element.nodeName!="SELECT") throw "fillComboBox can be called on a SELECT type object only";
+if(!jsonObject["dataSource"]) throw "dataSource property is missing in call to fillComboBox";
+let dataSource=jsonObject["dataSource"];
+
+if((typeof dataSource)!="object") throw "dataSource property should be a collection type in call to fillComboBox";
+if(!jsonObject["text"]) throw "text property is missing in call to fillComboBox";
+let text=jsonObject["text"];
+if((typeof text)!="string") throw "text property should be of string type in call to fillComboBox";
+if(!dataSource[0][text]) throw "invalid text property in call to fillComboBox";
+
+if(!jsonObject["value"]) throw "value property is missing in call to fillComboBox";
+let value=jsonObject["value"];
+if((typeof value)!="string") throw "value property should be of string type in call to fillComboBox";
+if(!dataSource[0][value]) throw "invalid value property in call to fillComboBox";
+var obj;
+let firstOption;
+if(jsonObject["firstOption"])
+{
+firstOption=jsonObject["firstOption"];
+if((typeof firstOption)!="object") throw "firstOption property should be a collection in call to fillComboBox";
+if(!firstOption["text"]) throw "text property is missing in firstOption in call to fillComboBox";
+let firstOptionText=firstOption["text"];
+if((typeof firstOptionText)!="string") throw "text property should be of string type in firstOption in call to fillComboBox";
+if(!firstOption["value"]) throw "value property is missing in firstOption in call to fillComboBox";
+let firstOptionValue=firstOption["value"];
+if((typeof firstOptionValue)!="string") throw "value property should be of string type in firstOption in call to fillComboBox";
+obj=document.createElement("option");
+obj.text=firstOptionText;
+obj.value=firstOptionValue;
+this.element.appendChild(obj);
+}
+for(var i=0;i<dataSource.length;i++)
+{
+obj=document.createElement("option");
+obj.text=dataSource[i][text];
+obj.value=dataSource[i][value];
+this.element.appendChild(obj);
+}
+
+
+
+};// fillComboBox ends
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+let jsonData={};
+let sendJSON=jsonObject["sendJSON"];
+if(!sendJSON) sendJSON=false;
+if((typeof sendJSON)!="boolean") throw "sendJSON property should be of boolean type in call to ajax";
+let queryString="";
+alert(sendJSON);
+if(jsonObject["data"])
+{
+if(sendJSON)
+{
+jsonData=jsonObject["data"];
+}
+else
+{
+queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+jsonData=jsonObject["data"];
+for(k in jsonData)
+{
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+alert(qsName);
+alert(qsValue);
+queryString=queryString+qsName+"="+qsValue;
+}
+alert(queryString);
+}
+
+}
+
+xmlHttpRequest.open('POST',url,true);
+if(sendJSON)
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(jsonData));
+}
+else
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xmlHttpRequest.send(queryString);
+}
+}
+}
+// TMJRock part ends here
+
+
+
+
+function populateDesignations()
+{
+$$$.ajax({
+"url":"servletOne",
+"methodType":"GET",
+"success":function(responseData){
+var designations=JSON.parse(responseData);
+$$$("designationCode").fillComboBox({
+"dataSource" : designations,
+"text" : "title",
+"value" : "code",
+"firstOption" : {
+"text" : "<select designation>",
+"value" : "-1"
+}
+}
+);
+},
+
+"failure":function(){
+alert('some problem');
+}
+});
+}
+window.addEventListener('load',populateDesignations);
+</script>
+</head>
+<body>
+<h1>Get type request Example</h1>
+<select id='designationCode'>
+</select>
+<br>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+var panels=[];
+var expandedIndex=-1;
+function accordianHeadingClicked(x)
+{
+if(expandedIndex!=-1) panels[expandedIndex].style.display="none";
+panels[x+1].style.display=panels[x+1].oldDisplay;
+expandedIndex=x+1;
+}
+function doit()
+{
+let accord=document.getElementById("mymy");
+let children=accord.childNodes;
+let x;
+for(x=0;x<children.length;x++)
+{
+//alert(children[x].nodeName);
+if(children[x].nodeName=="H3")
+{
+panels[panels.length]=children[x];
+}
+if(children[x].nodeName=="DIV")
+{
+panels[panels.length]=children[x];
+}
+}
+if(panels.length%2!=0) throw "Headings and division malformed to create accordian";
+for(x=0;x<panels.length;x+=2)
+{
+if(panels[x].nodeName!="H3") throw "Headings and division malformed to create accordian";
+if(panels[x+1].nodeName!="DIV") throw "Headings and division malformed to create accordian";
+}
+function createClickHandler(i)
+{
+return function(){
+accordianHeadingClicked(i);
+};
+}
+
+for(x=0;x<panels.length;x+=2)
+{
+panels[x].onclick=createClickHandler(x);
+panels[x+1].oldDisplay=panels[x+1].style.display;
+panels[x+1].style.display="none";
+}
+
+
+}
+window.addEventListener('load',doit);
+</script>
+</head>
+<body>
+<div id='mymy'>
+<h3>Heading 1</h3>
+<div>
+1 whatever whatever
+2 whatever whatever
+3 whatever whatever
+4 whatever whatever
+5 whatever whatever
+6 whatever whatever
+7 whatever whatever
+</div>
+
+<h3>Heading 2</h3>
+<div>
+11 whatever whatever
+22 whatever whatever
+33 whatever whatever
+44 whatever whatever
+55 whatever whatever
+66 whatever whatever
+77 whatever whatever
+</div>
+
+<h3>Heading 3</h3>
+<div>
+111 whatever whatever
+222 whatever whatever
+333 whatever whatever
+444 whatever whatever
+555 whatever whatever
+666 whatever whatever
+777 whatever whatever
+</div>
+
+
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+}
+
+$$$.model={
+"onStartup" : [],
+"accordians" : []
+}
+
+$$$.accordianHeadingClicked=function(accordianIndex,panelIndex)
+{
+alert(accordianIndex+","+panelIndex);
+if($$$.model.accordians[accordianIndex].expandedIndex!=-1) $$$.model.accordians[accordianIndex].panels[$$$.model.accordians[accordianIndex].expandedIndex].style.display="none";
+$$$.model.accordians[accordianIndex].panels[panelIndex+1].style.display=$$$.model.accordians[accordianIndex].panels[panelIndex+1].oldDisplay;
+$$$.model.accordians[accordianIndex].expandedIndex=panelIndex+1;
+
+}
+
+
+$$$.toAccordian=function(aid)
+{
+alert("To Accordian got called");
+var panels=[];
+var expandedIndex=-1;
+let accord=document.getElementById(aid);
+let children=accord.childNodes;
+let x;
+for(x=0;x<children.length;x++)
+{
+//alert(children[x].nodeName);
+if(children[x].nodeName=="H3")
+{
+panels[panels.length]=children[x];
+}
+if(children[x].nodeName=="DIV")
+{
+panels[panels.length]=children[x];
+}
+}
+if(panels.length%2!=0) throw "Headings and division malformed to create accordian";
+for(x=0;x<panels.length;x+=2)
+{
+if(panels[x].nodeName!="H3") throw "Headings and division malformed to create accordian";
+if(panels[x+1].nodeName!="DIV") throw "Headings and division malformed to create accordian";
+}
+function createClickHandler(accordianIndex,panelIndex)
+{
+return function(){
+$$$.accordianHeadingClicked(accordianIndex,panelIndex);
+};
+}
+let accordianIndex=$$$.model.accordians.length;
+for(x=0;x<panels.length;x+=2)
+{
+panels[x].onclick=createClickHandler(accordianIndex,x);
+panels[x+1].oldDisplay=panels[x+1].style.display;
+panels[x+1].style.display="none";
+}
+
+$$$.model.accordians[accordianIndex]={
+"panels" : panels,
+"expandedIndex" : -1
+};
+
+
+
+
+};
+$$$.onDocumentLoaded=function(func){
+if((typeof func)!="function") throw "Expected function, found "+(typeof func)+" in call to onDocumentLoaded";
+$$$.model.onStartup[$$$.model.onStartup.length]=func;
+}
+
+$$$.initFramework=function(){
+let x=0;
+while(x<$$$.model.onStartup.length)
+{
+$$$.model.onStartup[x]();
+x++;
+}
+}
+
+
+window.addEventListener('load',function(){
+$$$.initFramework();
+});
+
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// value function ends
+
+this.fillComboBox=function(jsonObject)
+{
+if(this.element.nodeName!="SELECT") throw "fillComboBox can be called on a SELECT type object only";
+if(!jsonObject["dataSource"]) throw "dataSource property is missing in call to fillComboBox";
+let dataSource=jsonObject["dataSource"];
+
+if((typeof dataSource)!="object") throw "dataSource property should be a collection type in call to fillComboBox";
+if(!jsonObject["text"]) throw "text property is missing in call to fillComboBox";
+let text=jsonObject["text"];
+if((typeof text)!="string") throw "text property should be of string type in call to fillComboBox";
+if(!dataSource[0][text]) throw "invalid text property in call to fillComboBox";
+
+if(!jsonObject["value"]) throw "value property is missing in call to fillComboBox";
+let value=jsonObject["value"];
+if((typeof value)!="string") throw "value property should be of string type in call to fillComboBox";
+if(!dataSource[0][value]) throw "invalid value property in call to fillComboBox";
+var obj;
+let firstOption;
+if(jsonObject["firstOption"])
+{
+firstOption=jsonObject["firstOption"];
+if((typeof firstOption)!="object") throw "firstOption property should be a collection in call to fillComboBox";
+if(!firstOption["text"]) throw "text property is missing in firstOption in call to fillComboBox";
+let firstOptionText=firstOption["text"];
+if((typeof firstOptionText)!="string") throw "text property should be of string type in firstOption in call to fillComboBox";
+if(!firstOption["value"]) throw "value property is missing in firstOption in call to fillComboBox";
+let firstOptionValue=firstOption["value"];
+if((typeof firstOptionValue)!="string") throw "value property should be of string type in firstOption in call to fillComboBox";
+obj=document.createElement("option");
+obj.text=firstOptionText;
+obj.value=firstOptionValue;
+this.element.appendChild(obj);
+}
+for(var i=0;i<dataSource.length;i++)
+{
+obj=document.createElement("option");
+obj.text=dataSource[i][text];
+obj.value=dataSource[i][value];
+this.element.appendChild(obj);
+}
+
+
+
+};// fillComboBox ends
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+let jsonData={};
+let sendJSON=jsonObject["sendJSON"];
+if(!sendJSON) sendJSON=false;
+if((typeof sendJSON)!="boolean") throw "sendJSON property should be of boolean type in call to ajax";
+let queryString="";
+alert(sendJSON);
+if(jsonObject["data"])
+{
+if(sendJSON)
+{
+jsonData=jsonObject["data"];
+}
+else
+{
+queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+jsonData=jsonObject["data"];
+for(k in jsonData)
+{
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+alert(qsName);
+alert(qsValue);
+queryString=queryString+qsName+"="+qsValue;
+}
+alert(queryString);
+}
+
+}
+
+xmlHttpRequest.open('POST',url,true);
+if(sendJSON)
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(jsonData));
+}
+else
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xmlHttpRequest.send(queryString);
+}
+}
+}
+// TMJRock part ends here
+
+
+$$$.onDocumentLoaded(function(){
+$$$.toAccordian("mymy");
+$$$.toAccordian("mymy1");
+});
+
+
+</script>
+</head>
+<body>
+<div id='mymy'>
+<h3>Heading 1</h3>
+<div>
+1 whatever whatever
+2 whatever whatever
+3 whatever whatever
+4 whatever whatever
+5 whatever whatever
+6 whatever whatever
+7 whatever whatever
+</div>
+
+<h3>Heading 2</h3>
+<div>
+11 whatever whatever
+22 whatever whatever
+33 whatever whatever
+44 whatever whatever
+55 whatever whatever
+66 whatever whatever
+77 whatever whatever
+</div>
+
+<h3>Heading 3</h3>
+<div>
+111 whatever whatever
+222 whatever whatever
+333 whatever whatever
+444 whatever whatever
+555 whatever whatever
+666 whatever whatever
+777 whatever whatever
+</div>
+</div>
+
+<div id='mymy1'>
+<h3>Cool 1</h3>
+<div>
+1 Cool cool
+2  Cool cool
+3  Cool cool
+4  Cool cool
+</div>
+
+<h3>Cool 2</h3>
+<div>
+11 Cool cool
+22 Cool cool
+33 Cool cool
+44 Cool cool
+55 Cool cool
+66 Cool cool
+</div>
+
+<h3>Cool 3</h3>
+<div>
+111 Cool cool
+222 Cool cool
+333 Cool cool
+444 Cool cool
+555 Cool cool
+</div>
+</div>
+
+
+
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>TMJRock</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+function showModal()
+{
+var whatever=document.getElementById('whatever');
+whatever.style.visibility='visible';
+
+}
+function closeModal()
+{
+document.getElementById('whatever').style.visibility='hidden';
+}
+</script>
+</head>
+<body>
+<div id='whatever' class='outer-division'>
+
+<div class='inner-division'>
+<img src='/TMJRock/images/cross.png' onclick='closeModal()'>
+
+</div>
+
+</div>
+
+<center>
+<button type='button' onclick='showModal()'>Login</button>
+</center>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+
+
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+// This will finally be part of TMJRock Javascript Library
+
+function $$$(parameter){
+this.parameter=parameter;
+var elementClone;
+this.fillComboBox=function(obj){
+var elementId;
+var designationComboBox=document.getElementById(this.parameter);
+var designations=obj.dataSource;
+var firstOption=obj.firstOption;
+var option;
+if(firstOption!=null)
+{
+option=document.createElement("option");
+option.value=firstOption.value;
+option.text=firstOption.text;
+option.selected=true;
+designationComboBox.appendChild(option);
+}
+
+var value=obj.value;
+var text=obj.text;
+
+
+
+for(var i=0;i<designations.length;i++)
+{
+option=document.createElement("option");
+if(value=='code') option.value=designations[i].code;
+if(text=='title') option.text=designations[i].title;
+designationComboBox.appendChild(option);
+}
+
+
+};
+
+return this;
+}
+
+$$$.modal=function(elementId){
+this.elementId=elementId;
+var element=document.getElementById(elementId);
+elementClone=element.cloneNode(true);
+element.remove();
+var modal=document.getElementById('modal');
+var whatever=document.getElementById('whatever')
+
+
+
+whatever.appendChild(elementClone);
+var opaqueWindow=document.getElementById('opaqueWindow');
+opaqueWindow.style.visibility='visible';
+
+
+
+};
+$$$.getElementId=function(){
+return this.elementId;
+};
+
+function closeModal()
+{
+var elementId=$$$.getElementId();
+var element=document.getElementById(elementId);
+element.remove();
+document.getElementById('opaqueWindow').style.visibility='hidden';
+document.body.appendChild(element);
+}
+
+
+
+
+// TMJRock Javascript Library code ends here
+
+// TMJRock user script starts here
+function showXYZ()
+{
+$$$.modal("xyz");
+}
+function showPQR()
+{
+$$$.modal("pqr");
+}
+
+// TMJRock user script ends here
+
+</script>
+</head>
+<body>
+<div id='opaqueWindow' class='outer-division'>
+
+<div class='inner-division' id='modal'>
+<img src='/TMJRock/images/cross.png' onclick='closeModal()'>
+<div id='whatever'></div>
+</div>
+
+</div>
+
+
+<h1>This is a modal example</h1>
+<button onclick='showXYZ()'>XYZ</button><br>
+<br>
+<button onclick='showPQR()'>PQR</button><br>
+<br>
+
+<div id='xyz'>
+<b>Cool</b>
+<h1>Whatever</h1>
+Great<br>
+Something something
+</div>
+
+<table id='pqr'>
+<tr><td>Whatever 1</td><td>Whatever 11</td></tr>
+<tr><td>Whatever 2</td><td>Whatever 22</td></tr>
+<tr><td>Whatever 3</td><td>Whatever 33</td></tr>
+<tr><td>Whatever 4</td><td>Whatever 44</td></tr>
+<tr><td>Whatever 5</td><td>Whatever 55</td></tr>
+<tr><td>Whatever 6</td><td>Whatever 66</td></tr>
+</table>
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+function getDesignation()
+{
+var titleSpan=document.getElementById('title');
+titleSpan.innerHTML="";
+var code=document.getElementById("code").value;
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.innerHTML=splits[1];
+}
+
+}
+else
+{
+alert('some problem');
+}
+}
+};
+// In this example encodeURI is not required
+var requestURL="servletTwo?code="+encodeURI(code);
+xmlHttpRequest.open('GET',requestURL,true);
+xmlHttpRequest.send();
+}
+window.addEventListener('load',getDesignation);
+</script>
+</head>
+<body>
+<h1>Get type request with data Example</h1>
+Enter code <input type='text' id='code'>
+<button type='button' onclick='getDesignation()'>Get Designation</button><br>
+<br>
+Title <span id='title'></span>
+<br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+function saveEnquiry()
+{
+var firstName=document.getElementById("firstName").value;
+var lastName=document.getElementById("lastName").value;
+var age=document.getElementById("age").value;
+var customer={
+"firstName" : firstName,
+"lastName" : lastName,
+"age" : age
+};
+
+var whatever=document.getElementById("whatever");
+whatever.innerHTML="";
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var customer=JSON.parse(this.responseText);
+var a="First Name : "+customer.firstName+"<br>";
+a=a+"Last Name : "+customer.lastName+"<br>";
+a=a+"Age : "+customer.age;
+whatever.innerHTML=a;
+
+}
+else
+{
+alert('some problem');
+}
+}
+};
+xmlHttpRequest.open('POST','servletThree',true);
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(customer));
+}
+</script>
+</head>
+<body>
+<h1>Post type request</h1>
+First name <input type='text' id='firstName'><br>
+Last name <input type='text' id='lastName'><br>
+Age <input type='text' id='age'><br>
+<button type='button' onclick='saveEnquiry()'>Save</button>
+<br>
+<div id='whatever'></div>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+// This will finally be part of TMJRock Javascript Library
+
+function map()
+{
+var key;
+var value;
+}
+
+
+function $$$(parameter){
+this.parameter=parameter;
+this.keyValueMap=[];
+this.ptr;
+var elementClone;
+this.fillComboBox=function(obj){
+var elementId;
+var designationComboBox=document.getElementById(this.parameter);
+var designations=obj.dataSource;
+var firstOption=obj.firstOption;
+var option;
+if(firstOption!=null)
+{
+option=document.createElement("option");
+option.value=firstOption.value;
+option.text=firstOption.text;
+option.selected=true;
+designationComboBox.appendChild(option);
+}
+
+var value=obj.value;
+var text=obj.text;
+
+
+
+for(var i=0;i<designations.length;i++)
+{
+option=document.createElement("option");
+if(value=='code') option.value=designations[i].code;
+if(text=='title') option.text=designations[i].title;
+designationComboBox.appendChild(option);
+}
+
+
+};
+this.isValid=function(obj){
+var str=JSON.stringify(obj);
+this.parseData(str.substring(1,str.length-1));
+var valid=true;
+var elements;
+var error=null;
+var errorSection=null;
+var element;
+for(var k=0;k<keyValueMap.length;k++)
+{
+errorSection=null;
+var m=keyValueMap[k];
+elements=document.getElementsByName(m.key);
+
+// Input field starts here
+if(elements[0] instanceof HTMLInputElement)
+{
+error="";
+if(elements[0].type=='text')
+{
+element=elements[0];
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+if(element.value==null || element.value.trim().length==0)
+{
+error="required";
+valid=false;
+}
+}
+}
+if(m.value[i].key=="max-length")
+{
+var maxLen=m.value[i].value;
+var len=element.value.trim().length;
+if(len>maxLen)
+{
+error="max-length";
+valid=false;
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+} // inner for loop
+} // text input
+
+error="";
+if(elements[0].type=='radio')
+{
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+var checked=false;
+for(var e=0;e<elements.length;e++)
+{
+if(elements[e].checked==true) 
+{
+checked=true;
+break;
+}
+}
+if(checked==false)
+{
+error="required";
+valid=false;
+}
+
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+}
+}
+}
+} // inner for loop
+
+
+} // radio input
+
+
+/*
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+*/
+error="";
+if(elements[0].type=='checkbox')
+{
+element=elements[0];
+var displayAlert=false;
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required-state")
+{
+if(m.value[i].value=='true')
+{
+if(element.checked==false)
+{
+error="required-state";
+valid=false;
+}
+}
+} 
+if(m.value[i].key=="display-alert")
+{
+if(m.value[i].value=='true') displayAlert=true;
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+
+if(error==key)
+{
+if(displayAlert==true)
+{
+alert(value);
+}
+}
+}
+}
+} // inner for loop
+} // checkbox
+
+
+
+
+
+} 
+
+// Input field ends here
+
+// Text area starts here
+if(elements[0] instanceof HTMLTextAreaElement)
+{
+error="";
+element=elements[0];
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+if(element.value==null || element.value.trim().length==0)
+{
+error="required";
+valid=false;
+}
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+} // inner for loop 
+}
+// Text area ends here
+
+
+// HTML select element starts here
+if(elements[0] instanceof HTMLSelectElement)
+{
+element=elements[0];
+error="";
+var invalidValue=-1;
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="invalid")
+{
+invalidValue=m.value[i].value;
+if(element.value==invalidValue)
+{
+error="invalid";
+valid=false;
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+
+} // inner for loop
+}
+// HTML select element ends here
+
+
+
+
+
+
+
+} // outer for loop
+
+return valid;
+};
+
+this.parseData=function(str)
+{
+		
+this.ptr=0;
+var j,i,f,ep,cm;
+i=0;
+f=-1;
+var splits=[];
+while(f<str.length)
+{
+j=str.indexOf("},",f+1);
+if(j==-1)
+{
+j=str.lastIndexOf("}")+1;
+
+}
+else j=j+1;
+
+splits[i]=str.substring(f+1,j);
+
+i++;
+f=j;
+}
+
+
+
+j=0;
+i=0;
+f=-1;
+var substr;
+for(var g=0;g<splits.length;g++)
+{
+substr=splits[g];
+j=0;
+i=0;
+f=-1;
+while(j<substr.length && f<substr.length)
+{
+j=substr.indexOf(":",f+1);
+if(substr.charAt(j+1)=="{")
+{
+ep=substr.lastIndexOf("}");
+cm=new map();
+cm.key=substr.substring(f+2,j-1);
+process(cm,substr.substring(j+2,ep));
+keyValueMap[ptr]=cm;
+ptr++;
+f=ep+1;
+}
+else
+{
+cm=new map();
+cm.key=substr.substring(f+2,j-1);
+f=substr.indexOf(",",j);
+if(f==-1) f=substr.length;
+cm.value=substr.substring(j+1,f);
+keyValueMap[ptr]=cm;
+ptr++;
+
+}
+
+}// loop ends
+
+}
+
+
+
+};
+
+
+
+
+
+return this;
+}
+
+function process(m,str)
+{
+
+
+
+var marray=[];
+var i,f,j,ep,cm;
+j=0;
+i=0;
+f=-1;
+while(j<str.length && f<str.length)
+{
+j=str.indexOf(":",f+1);
+if(str.charAt(j+1)=="{")
+{
+ep=str.lastIndexOf("}");
+cm=new map();
+cm.key=str.substring(f+2,j-1);
+process(cm,str.substring(j+2,ep));
+marray[i]=cm;
+i++;
+f=ep+1;
+}
+else
+{
+cm=new map();
+cm.key=str.substring(f+2,j-1);
+f=str.indexOf(",",j);
+if(f==-1) f=str.length;
+cm.value=str.substring(j+1,f);
+marray[i]=cm;
+i++;
+}
+m.value=marray;
+} 
+
+}
+
+
+
+
+
+$$$.modal=function(elementId){
+this.elementId=elementId;
+var element=document.getElementById(elementId);
+elementClone=element.cloneNode(true);
+element.remove();
+var modal=document.getElementById('modal');
+var whatever=document.getElementById('whatever')
+
+
+
+whatever.appendChild(elementClone);
+var opaqueWindow=document.getElementById('opaqueWindow');
+opaqueWindow.style.visibility='visible';
+
+
+
+};
+$$$.getElementId=function(){
+return this.elementId;
+};
+
+function closeModal()
+{
+var elementId=$$$.getElementId();
+var element=document.getElementById(elementId);
+element.remove();
+document.getElementById('opaqueWindow').style.visibility='hidden';
+document.body.appendChild(element);
+}
+
+
+
+
+
+// TMJRock Javascript Library code ends here
+
+// TMJRock user script starts here
+function doSomething()
+{
+return $$$("someForm").isValid({
+"nm": {
+"required" : true,
+"max-length": 20,
+"error-pane" : "nmErrorSection",
+"error":{
+"required":"Name required",
+"max-length":"Name cannot exceed 20 characters"
+}
+
+},
+
+
+
+"ad":{
+"required":true,
+"error-pane" : "adErrorSection",
+"error":{
+"required":"Address required",
+}
+
+},
+"ct":{
+"invalid":-1,
+"error-pane":"ctErrorSection",
+"error":{
+"invalid":"Select city",
+}
+},
+"gender":{
+"required": true,
+"error-pane" : "genderErrorSection",
+"error":{
+"required":"Select gender",
+}
+},
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+
+
+});
+}
+
+// TMJRock user script ends here
+
+</script>
+</head>
+<body>
+
+<h1>TMJRock Validations</h1>
+<form id='someForm' onsubmit='return doSomething()' action='whatever'>
+Name <input type='text' name='nm' id='nm'>
+<span id='nmErrorSection'></span><br>
+Address 
+<textarea name='ad' id='ad'></textarea>
+<span id='adErrorSection'></span>
+<br>
+Select City
+<select id='ct' name='ct'>
+<option value='-1'>Select city</option>
+<option value='1'>Ujjain</option>
+<option value='2'>Dewas</option>
+<option value='3'>Indore</option>
+</select><span id='ctErrorSection'></span>
+<br>
+Gender &nbsp;&nbsp;&nbsp;
+Male <input type='radio' name='gender' id='ml' value='M'>
+&nbsp;&nbsp;&nbsp;
+Female <input type='radio' name='gender' id='fe' value='F'>
+&nbsp;&nbsp;&nbsp;
+<span id='genderErrorSection'></span>
+<br>
+<input type='checkbox' name='agree' id='ag' value='Y'>
+<br>
+<Button type='submit'>Register</button>
+</form>
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+// This will finally be part of TMJRock Javascript Library
+var divisionsClone=[];
+var divisions;
+var indexExpanded=-1;
+function $$$(parameter){
+this.parameter=parameter;
+return this;
+}
+$$$.onDocumentLoaded=function(p2f){
+window.addEventListener('load',p2f);
+};
+function showDivisionHandler(index)
+{
+return function()
+{
+showDivision(index);
+};
+}
+function showDivision(index)
+{
+if(index==indexExpanded)
+{
+divisions[index].innerHTML="";
+indexExpanded=-1;
+return;
+}
+divisions[index].innerHTML=divisionsClone[index];
+for(var i=0;i<divisions.length;i++)
+{
+if(i==index) continue;
+divisions[i].innerHTML="";
+}
+indexExpanded=index;
+}
+$$$.toAccordian=function(ee){
+var element=document.getElementById(ee);
+var headings=element.getElementsByTagName("h3");
+for(var i=0;i<headings.length;i++)
+{
+headings[i].onclick=showDivisionHandler(i);
+headings[i].style.cursor='pointer';
+}
+divisions=element.getElementsByTagName("div");
+for(var i=0;i<divisions.length;i++)
+{
+divisionsClone[i]=divisions[i].innerHTML;
+divisions[i].innerHTML="";
+}
+};
+
+// TMJRock Javascript Library code ends here
+
+// TMJRock user script starts here
+
+$$$.onDocumentLoaded(function(){
+$$$.toAccordian("mymy");
+}
+);
+// TMJRock user script ends here
+
+</script>
+</head>
+<body>
+<div id='mymy'>
+<h3>Heading 1</h3>
+<div>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+</div>
+
+<h3>Heading 2</h3>
+<div>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+</div>
+
+<h3>Heading 3</h3>
+<div>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+</div>
+
+
+
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+function doSomething()
+{
+var elements=document.querySelectorAll('[tm="yes"]');
+alert(elements);
+for(var i=0;i<elements.length;i++)
+{
+alert(elements[i].innerHTML);
+}
+}
+</script>
+</head>
+<body>
+God is great
+<div id='whatever' tm="yes">
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+</div>
+
+<span id='whatever1' tm="yes">
+Whatever whatever whatever2
+Whatever whatever whatever3
+Whatever whatever whatever4
+Whatever whatever whatever5
+Whatever whatever whatever6
+Whatever whatever whatever7
+</span>
+
+<div id='cool'>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+</div>
+
+<button type='button' onclick='doSomething()'>Do something</button>
+
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/employees.css'>
+<script>
+// In this part the TMJRock programmer should do something
+function $$$(parameter){
+this.parameter=parameter;
+
+return this;
+}
+$$$.onDocumentLoaded=function(p2f){
+window.addEventListener('load',p2f);
+};
+var selectedRow=null;
+var currentPage=1;
+var rowsLoaded=0;
+$$$.selectRow=function(rowAddress,rowIndex)
+{
+if(selectedRow==rowAddress) return;
+if(selectedRow!=null)
+{
+selectedRow.style.background="white";
+selectedRow.style.color="black";
+}
+rowAddress.style.background="#7C7B7B";
+rowAddress.style.color="white";
+selectedRow=rowAddress;
+};
+
+
+$$$.createDynamicClickHandler=function(rowAddress,rowIndex)
+{
+return function(){
+$$$.selectRow(rowAddress,rowIndex);
+};
+};
+
+var tableBody;
+var rowSelectionEnabled;
+var model;
+var pagination;
+var pageSize;
+var rowCount;
+var columnCount;
+var pageCount;
+$$$.grid=function(elementId,jsonObj){
+rowSelectionEnabled=jsonObj.rowSelectionEnabled;
+model=jsonObj.model;
+pagination=jsonObj.pagination;
+pageSize=jsonObj.pageSize;
+rowCount=model.getRowCount();
+columnCount=model.getColumnCount();
+var table=document.createElement("table");
+table.border='1';
+var tableHeadCell;
+var element;
+var tableHead=document.createElement("thead");
+tableBody=document.createElement("tbody");
+pageCount=Math.ceil(rowCount/pageSize);
+alert(pageCount);
+var paginationSection=document.getElementById("pagination");
+var str="";
+if(pageCount==0)
+{
+str=str+"<button id="+1+" disabled type='button' onclick='$$$.loadNextPage("+1+")'>"+1+"</button>&nbsp;&nbsp;";
+}
+
+else
+{
+for(var i=0;i<pageCount;i++)
+{
+if((i+1)==currentPage)
+{
+str=str+"<button id="+(i+1)+" disabled type='button' onclick='$$$.loadNextPage("+(i+1)+")'>"+(i+1)+"</button>&nbsp;&nbsp;";
+}
+else str=str+"<button id="+(i+1)+" type='button' onclick='$$$.loadNextPage("+(i+1)+")'>"+(i+1)+"</button>&nbsp;&nbsp;";
+}
+}
+paginationSection.innerHTML=str;
+for(var i=0;i<columnCount;i++)
+{
+tableHeadCell=document.createElement("td");
+tableHeadCell.innerHTML=model.getColumnName(i);
+tableHeadCell.className=model.getColumnClass(i);
+tableHead.appendChild(tableHeadCell);
+}
+table.appendChild(tableHead);
+var tableRow;
+var tableCell;
+
+for(var r=0;r<rowCount;r++)
+{
+if(pagination && r==pageSize)
+{
+rowsLoaded=r;
+break;
+}
+tableRow=document.createElement("tr");
+tableRow.style.cursor='pointer';
+for(var c=0;c<columnCount;c++)
+{
+tableCell=document.createElement("td");
+tableCell.innerHTML=model.getData(r,c);
+tableRow.appendChild(tableCell);
+}
+if(rowSelectionEnabled) tableRow.onclick=this.createDynamicClickHandler(tableRow,r);
+tableBody.appendChild(tableRow);
+}
+table.appendChild(tableBody);
+element=document.getElementById(elementId);
+element.appendChild(table);
+};
+
+$$$.loadNextPage=function(pageNo){
+tableBody.innerHTML="";
+var count=0;
+var tableRow;
+var tableCell;
+var sp=(pageNo*pageSize)-pageSize;
+var ep=(pageNo*pageSize)-1;
+for(var r=sp;r<rowCount && r<=ep;r++,count++)
+{
+if(count==pageSize)
+{
+rowsLoaded=r;
+break;
+}
+tableRow=document.createElement("tr");
+tableRow.style.cursor='pointer';
+for(var c=0;c<columnCount;c++)
+{
+tableCell=document.createElement("td");
+tableCell.innerHTML=model.getData(r,c);
+tableRow.appendChild(tableCell);
+}
+if(rowSelectionEnabled) tableRow.onclick=this.createDynamicClickHandler(tableRow,r);
+tableBody.appendChild(tableRow);
+}
+var disabledButton=document.getElementById(currentPage);
+var buttonToBeDisabled=document.getElementById(pageNo);
+disabledButton.disabled=false;
+buttonToBeDisabled.disabled=true;
+currentPage=pageNo;
+};
+
+
+
+
+// The following code is being written by the TMJRock user
+
+function DataModel()
+{
+this.data=null;
+this.title=["S.No.","Id","Name","Designation","Edit","Delete"];
+this.getRowCount=function(){
+if(this.data==null) return 0;
+else return this.data.length;
+};
+this.getColumnCount=function(){
+return this.title.length;
+};
+this.getColumnName=function(columnIndex){
+return this.title[columnIndex];
+};
+this.getData=function(rowIndex,columnIndex){
+if(columnIndex==0) return rowIndex+1;
+if(columnIndex==1) return this.data[rowIndex].employeeId;
+if(columnIndex==2) return this.data[rowIndex].name;
+if(columnIndex==3) return this.data[rowIndex].designation;
+if(columnIndex==4) return "<a href='/stylethree/EmployeeEditForm.jsp?employeeId="+this.data[rowIndex].employeeId+"'>Edit</a>";
+if(columnIndex==5) return "<a href='/stylethree/EmployeeDeleteConfirmation.jsp?employeeId="+this.data[rowIndex].employeeId+"'>Delete</a>";
+};
+this.getColumnClass=function(columnIndex){
+if(columnIndex==0) return 'employeeGridSNOColumnTitle';
+if(columnIndex==1) return 'employeeGridIdColumnTitle';
+if(columnIndex==2) return 'employeeGridNameColumnTitle';
+if(columnIndex==3) return 'employeeGridDesignationColumnTitle';
+if(columnIndex==4) return 'employeeGridEditOptionColumnTitle';
+if(columnIndex==5) return 'employeeGridDeleteOptionColumnTitle';
+};
+
+
+// many more functions
+}
+
+var myDataModel=new DataModel();
+
+
+
+function whatever()
+{
+var employees=[{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+];
+
+
+myDataModel.data=employees;
+}
+
+function doSomething()
+{
+whatever();
+$$$.grid("someId",{
+"model":myDataModel,
+"pagination": true,
+"pageSize":10,
+"rowSelectionEnabled":true
+});
+}
+
+$$$.onDocumentLoaded(doSomething);
+</script>
+</head>
+<body>
+<h3>Employees</h3>
+<div id='someId'>
+
+</div>
+<br><br>
+<div id='pagination'>
+</div>
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+</head>
+<body>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a><br>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a><br>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><br>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+// This will finally be part of TMJRock Javascript Library
+function $$$(parameter){
+this.parameter=parameter;
+this.fillComboBox=function(obj){
+
+var designationComboBox=document.getElementById(this.parameter);
+var designations=obj.dataSource;
+var firstOption=obj.firstOption;
+var option;
+if(firstOption!=null)
+{
+option=document.createElement("option");
+option.value=firstOption.value;
+option.text=firstOption.text;
+option.selected=true;
+designationComboBox.appendChild(option);
+}
+
+var value=obj.value;
+var text=obj.text;
+alert(value);
+alert(text);
+
+
+for(var i=0;i<designations.length;i++)
+{
+option=document.createElement("option");
+if(value=='code') option.value=designations[i].code;
+if(text=='title') option.text=designations[i].title;
+designationComboBox.appendChild(option);
+}
+
+
+};
+
+return this;
+}
+
+$$$.ajax=function(obj){
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+obj.success(this.responseText);
+}
+else
+{
+obj.failure();
+}
+}
+
+
+};
+xmlHttpRequest.open(obj.methodType,obj.url,true);
+xmlHttpRequest.send();
+}
+
+
+// TMJRock Javascript Library code ends here
+
+function populateDesignations()
+{
+$$$.ajax({
+"url" : "servletOne",
+"methodType" : "GET",
+"success" : function(responseData){
+var designations=JSON.parse(responseData);
+$$$("designationCode").fillComboBox({
+"dataSource" : designations,
+"text" : "title",
+"value" : "code",
+"firstOption" : {
+"text" : "<select designation>",
+"value" : "-1"
+}
+});
+
+},
+"failure" : function(){
+alert("some problem");
+}
+});
+}
+window.addEventListener('load',populateDesignations);
+</script>
+</head>
+<body>
+<h1>Get type request Example</h1>
+<select id='designationCode'>
+</select>
+<br>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+// TMJRock part starts here
+function $$$(cid)
+{
+
+}
+$$$.ajax=function(jsonObject){
+if(!jsonObject["url"]) throw "url property is missing in call to json";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType should be of string type in call to ajax";
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+if(onSuccess) onSuccess(this.responseText);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+};
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+
+}// get part ends here
+if(methodType=="POST")
+{
+
+} 
+
+};
+
+
+
+
+
+
+// TMJRock part ends here
+
+
+
+function populateDesignations()
+{
+$$$.ajax({
+"url":"servletOne",
+"success" : function(responseData){
+var designations=JSON.parse(responseData);
+alert(designations);
+var designationsComboBox=document.getElementById("designationCode");
+var obj;
+for(var i=0;i<designations.length;i++)
+{
+obj=document.createElement("option");
+obj.value=designations[i].code;
+obj.text=designations[i].title;
+designationsComboBox.appendChild(obj);
+}
+},
+"failure" : function(){
+alert('some problem');
+}
+});
+
+
+
+
+
+}
+window.addEventListener('load',populateDesignations);
+</script>
+</head>
+<body>
+<h1>Get type request Example</h1>
+<select id='designationCode'>
+</select>
+<br>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<style>
+.modalMask
+{
+width:100%;
+height:100%;
+top:0;
+left:0;
+border : 1px solid red;
+background: gray;
+position: fixed;
+opacity : 70%
+}
+.modal
+{
+width: 400px;
+min-width: 400px;
+height: 300px;
+min-height: 300px;
+background-color: blue;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+border: 2px solid white;
+overflow: auto;
+}
+.closeButton
+{
+float: right;
+padding: 2px 7px;
+cursor: pointer;
+}
+
+</style>
+
+<script>
+function showIt()
+{
+var d=document.createElement("div");
+d.classList.add("xyz");
+document.body.appendChild(d);
+var p=document.createElement("div");
+p.classList.add("pqr");
+document.body.appendChild(p);
+var s=document.createElement("span");
+s.classList.add("lmn");
+var t=document.createTextNode("x");
+s.appendChild(t);
+p.appendChild(s);
+}
+
+
+function Modal(cid)
+{
+var objectAddress=this;
+this.onOpen=null;
+this.onClose=null;
+var contentId=cid;
+var contentReference=document.getElementById(cid);
+var contentParentReference=contentReference.parentElement;
+var contentIndex=0;
+while(contentIndex<contentParentReference.children.length)
+{
+if(contentReference==contentParentReference.children[contentIndex])
+{
+break;
+}
+contentIndex++;
+}
+var modalMaskDivision=document.createElement("div");
+modalMaskDivision.classList.add("modalMask");
+var modalDivision=document.createElement("div");
+modalDivision.classList.add("modal");
+var closeButtonSpan=document.createElement("span");
+closeButtonSpan.classList.add("closeButton");
+var closeButtonMarker=document.createTextNode("x");
+closeButtonSpan.appendChild(closeButtonMarker);
+modalDivision.appendChild(closeButtonSpan);
+contentReference.remove();
+modalDivision.appendChild(contentReference);
+
+this.show=function(){
+document.body.appendChild(modalMaskDivision);
+document.body.appendChild(modalDivision);
+if(this.onOpen) this.onOpen();
+};
+
+closeButtonSpan.onclick=function(){
+
+contentReference.remove();
+modalDivision.remove();
+modalMaskDivision.remove();
+if(contentParentReference.children.length==contentIndex)
+{
+
+contentParentReference.appendChild(contentReference);
+}
+else
+{
+contentParentReference.insertBefore(contentReference,contentParentReference.children[contentIndex]);
+}
+if(objectAddress.onClose) objectAddress.onClose();
+};
+
+
+}// Modal class ends here
+
+
+function createModal1()
+{
+var modal=new Modal("ab");
+modal.onOpen=function(){
+alert("Modal with ab opened");
+};
+modal.onClose=function(){
+alert("Modal with ab closed");
+};
+modal.show();
+}
+function createModal2()
+{
+var modal=new Modal("pq");
+modal.onOpen=function(){
+alert("Modal with pq opened");
+};
+modal.onClose=function(){
+alert("Modal with pq closed");
+};
+modal.show();
+}
+
+</script>
+</head>
+<body>
+<button onclick='showIt()'>Show It</button>
+<button onclick='createModal1()'>Show Frist Modal</button>
+<button onclick='createModal2()'>Show Second Modal</button>
+<div id='ab'>
+God is great
+</div>
+<div id='pq'>
+Ujjain is the city of Gods
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<style>
+.modalMask
+{
+width:100%;
+height:100%;
+top:0;
+left:0;
+border : 1px solid red;
+background: gray;
+position: fixed;
+opacity : 70%
+}
+.modal
+{
+width: 400px;
+min-width: 400px;
+height: 300px;
+min-height: 300px;
+background-color: blue;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+border: 2px solid white;
+overflow: auto;
+}
+.closeButton
+{
+float: right;
+padding: 2px 7px;
+cursor: pointer;
+}
+
+</style>
+
+<script>
+
+function showIt()
+{
+var d=document.createElement("div");
+d.classList.add("xyz");
+document.body.appendChild(d);
+var p=document.createElement("div");
+p.classList.add("pqr");
+document.body.appendChild(p);
+var s=document.createElement("span");
+s.classList.add("lmn");
+var t=document.createTextNode("x");
+s.appendChild(t);
+p.appendChild(s);
+}
+var ds={"modals" : []};
+
+function Modal(jsonObject)
+{
+var objectAddress=this;
+this.onOpen=null;
+this.onClose=null;
+this.contentId=jsonObject["contentId"];
+if(jsonObject["element"]) this.element=jsonObject["element"];
+
+var modalMaskDivision=document.createElement("div");
+modalMaskDivision.classList.add("modalMask");
+if(jsonObject["maskColor"]) modalMaskDivision.style.background=jsonObject["maskColor"];
+
+var modalDivision=document.createElement("div");
+modalDivision.classList.add("modal");
+if(jsonObject["modalBackgroundColor"]) modalDivision.style.background=jsonObject["modalBackgroundColor"];
+if(jsonObject["size"])
+{
+var splits=jsonObject["size"].split("x");
+var width=splits[0]+"px";
+var height=splits[1]+"px";
+modalDivision.style.width=width;
+modalDivision.style.height=height;
+}
+
+if(jsonObject["closeButton"])
+{
+var e=jsonObject["closeButton"];
+if(e==true)
+{
+
+var closeButtonSpan=document.createElement("span");
+closeButtonSpan.classList.add("closeButton");
+var closeButtonMarker=document.createTextNode("x");
+closeButtonSpan.appendChild(closeButtonMarker);
+modalDivision.appendChild(closeButtonSpan);
+closeButtonSpan.onclick=function(){
+
+contentReference.remove();
+modalDivision.remove();
+modalMaskDivision.remove();
+if(contentParentReference.children.length==contentIndex)
+{
+
+contentParentReference.appendChild(contentReference);
+}
+else
+{
+contentParentReference.insertBefore(contentReference,contentParentReference.children[contentIndex]);
+}
+if(objectAddress.onClose) objectAddress.onClose();
+};
+
+
+}
+
+}
+
+var contentReference=null;
+for(var i=0;i<ds.modals.length;i++)
+{
+contentReference=ds.modals[i]["element"];
+if(contentReference.hasAttribute("id"))
+{
+if(contentReference.getAttribute("id")==this.contentId)
+{
+alert(contentReference.getAttribute("id"));
+modalDivision.append(contentReference);
+}
+}
+
+
+}
+
+
+
+
+
+
+
+this.show=function(){
+document.body.appendChild(modalMaskDivision);
+document.body.appendChild(modalDivision);
+/*
+if(this.onOpen) this.onOpen();
+*/
+
+
+};
+
+
+
+}// Modal class ends here
+
+function abOpened()
+{
+alert("Modal with ab opened");
+}
+function abClosed()
+{
+alert("Modal with pq opened");
+}
+
+function createModal1() 
+{
+var modal=new Modal();
+modal.onOpen=function(){
+alert("Modal with ab opened");
+};
+modal.onClose=function(){
+alert("Modal with ab closed");
+};
+modal.show();
+}
+function createModal2()
+{
+var modal=new Modal("pq");
+modal.onOpen=function(){
+alert("Modal with pq opened");
+};
+modal.onClose=function(){
+alert("Modal with pq closed");
+};
+modal.show();
+}
+
+function loader()
+{
+var elements=document.getElementsByTagName("*");
+alert(elements.length);
+var t=null;
+var modal;
+var id;
+for(var i=0;i<elements.length;i++)
+{
+t=elements[i];
+//alert(t);
+//if(t.hasAttribute("id")) alert(t.getAttribute("id"));
+if(t.hasAttribute("forModal"))
+{
+if(t.getAttribute("forModal")=="true")
+{
+if(t.hasAttribute("id")) id=t.getAttribute("id");
+modal=new Modal({
+"contentId" : id,
+"element" : t
+});
+
+ds.modals[ds.modals.length]=modal;
+t.remove();
+i--;
+}
+}
+}
+/*
+for(var i=0;i<ds.modals.length;i++)
+{
+alert(ds.modals[i].element["id"]);
+ds.modals[i].element.remove();
+}
+*/
+}
+
+window.addEventListener('load',loader);
+
+</script>
+</head>
+<body>
+<button onclick='showIt()'>Show It</button>
+<button onclick='createModal1()'>Show Frist Modal</button>
+<button onclick='createModal2()'>Show Second Modal</button>
+<div id='ab' forModal='true' size="200x300" header="Some heading" footer="Some footer" maskColor="#3355ff" modalBackgroundColor="#549933" closeButton="false">
+God is great
+</div>
+<div id='pq' forModal='true'>
+Ujjain is the city of Gods
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<style>
+.modalMask
+{
+width:100%;
+height:100%;
+top:0;
+left:0;
+border : 1px solid red;
+background: gray;
+position: fixed;
+opacity : 70%
+}
+.modal
+{
+width: 400px;
+min-width: 400px;
+height: 300px;
+min-height: 300px;
+background-color: blue;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+border: 2px solid white;
+border-radius : 10px;
+}
+.closeButton
+{
+float: right;
+padding: 2px 7px;
+cursor: pointer;
+margin-right : 5px;
+margin-top : 5px;
+font-size : 14pt;
+}
+
+</style>
+
+<script>
+var ds={
+"modals" : []
+};
+var $$$={
+"modals" : {}
+};
+$$$.modals.show=function(mid)
+{
+var modal=null;
+for(var i=0;i<ds.modals.length;i++)
+{
+if(ds.modals[i].getContentId()==mid) 
+{
+modal=ds.modals[i];
+break;
+}
+}
+if(modal==null) return;
+modal.show();
+}
+function Modal(cref)
+{
+var objectAddress=this;
+this.onOpen=null;
+this.onClose=null;
+var contentReference=cref;
+
+
+this.getContentId=function(){
+return contentReference.id;
+};
+
+var contentParentReference=contentReference.parentElement;
+var contentIndex=0;
+while(contentIndex<contentParentReference.children.length)
+{
+if(contentReference==contentParentReference.children[contentIndex])
+{
+break;
+}
+contentIndex++;
+}
+var modalMaskDivision=document.createElement("div");
+modalMaskDivision.classList.add("modalMask");
+var modalDivision=document.createElement("div");
+modalDivision.classList.add("modal");
+
+
+var headerDivision=document.createElement("div");
+headerDivision.style.background="red";
+headerDivision.style.right="0";
+headerDivision.style.height="40px";
+headerDivision.style.padding="5px";
+modalDivision.appendChild(headerDivision);
+
+
+
+if(contentReference.hasAttribute("size"))
+{
+var sz=contentReference.getAttribute("size");
+
+let xpos=sz.indexOf("x");
+if(xpos==-1) sz.indexOf("X");
+if (xpos==-1) throw "In case of modal size should be specified as widhtxheight";
+if(xpos==0 || xpos==sz.length-1) throw "In case of modal size should be specified as widhtxheight";
+let width=sz.substring(0,xpos);
+width=parseInt(width)+20;
+let height=sz.substring(xpos+1);
+modalDivision.style.width=(width)+"px";
+height=parseInt(height)+80;
+modalDivision.style.height=(height)+"px";
+}
+
+else
+{
+modalDivision.style.width="300px";
+modalDivision.style.height="300px";
+}
+
+
+if(contentReference.hasAttribute("header"))
+{
+var hd=contentReference.getAttribute("header");
+headerDivision.innerHTML=hd;
+
+}
+
+
+if(contentReference.hasAttribute("maskColor"))
+{
+var mkc=contentReference.getAttribute("maskColor");
+modalMaskDivision.style.background=mkc;
+}
+if(contentReference.hasAttribute("modalBackgroundColor"))
+{
+var mbc=contentReference.getAttribute("modalBackgroundColor");
+modalDivision.style.background=mbc;
+}
+
+
+var contentDivision=document.createElement("div");
+//contentDivision.style.border="1px solid black";
+contentDivision.style.height=(modalDivision.style.height.substring(0,modalDivision.style.height.length-2)-126)+"px";
+contentDivision.style.width="98%";
+contentDivision.style.overflow="auto";
+contentDivision.style.padding="5px";
+contentReference.remove();
+contentDivision.appendChild(contentReference);
+modalDivision.appendChild(contentDivision);
+
+var footerDivision=document.createElement("div");
+footerDivision.style.background="pink";
+footerDivision.style.left="0";
+footerDivision.style.right="0";
+footerDivision.style.height="40px";
+footerDivision.style.position="absolute";
+footerDivision.style.bottom="0";
+footerDivision.style.padding="5px";
+modalDivision.appendChild(footerDivision);
+
+if(contentReference.hasAttribute("footer"))
+{
+var ft=contentReference.getAttribute("footer");
+footerDivision.innerHTML=ft;
+}
+
+
+
+var closeButtonSpan=null;
+if(contentReference.hasAttribute("closeButton"))
+{
+var cb=contentReference.getAttribute("closeButton");
+if(cb.toUpperCase()=="TRUE")
+{
+closeButtonSpan=document.createElement("span");
+closeButtonSpan.classList.add("closeButton");
+var closeButtonMarker=document.createElement("img");
+alert(closeButtonMarker.nodeName);
+alert(closeButtonMarker.src);
+closeButtonMarker.src="/TMJRock/images/cross.png";
+alert(closeButtonMarker.src);
+closeButtonSpan.appendChild(closeButtonMarker);
+headerDivision.appendChild(closeButtonSpan);
+}
+}
+if(contentReference.hasAttribute("onOpen"))
+{
+var oo=contentReference.getAttribute("onOpen");
+this.onOpen=oo;
+}
+if(contentReference.hasAttribute("onClose"))
+{
+var oc=contentReference.getAttribute("onClose");
+this.onClose=oc;
+}
+
+
+
+
+
+
+
+this.show=function(){
+document.body.appendChild(modalMaskDivision);
+document.body.appendChild(modalDivision);
+if(this.onOpen) setTimeout(function(){eval(objectAddress.onOpen);},100);
+};
+if(closeButtonSpan!=null)
+{
+closeButtonSpan.onclick=function(){
+modalDivision.remove();
+modalMaskDivision.remove();
+if(objectAddress.onClose) setTimeout(function(){eval(objectAddress.onClose);},100);
+};
+}
+
+}// Modal class ends here
+function abOpened()
+{
+alert("Modal with ab opened");
+}
+function abClosed()
+{
+alert("Modal with ab closed");
+}
+
+
+function createModal1()
+{
+$$$.modals.show("ab");
+}
+function createModal2()
+{
+$$$("pq").onOpen=function(){
+alert("Modal with pq opened");
+};
+$$$("pq").onClose=function(){
+alert("Modal with pq closed");
+};
+$$$("pq").show();
+}
+function loader()
+{
+var all=document.getElementsByTagName("*");
+var i;
+for(i=0;i<all.length;i++)
+{
+if(all[i].hasAttribute("forModal"))
+{
+if(all[i].getAttribute("forModal").toUpperCase()=="TRUE")
+{
+ds.modals[ds.modals.length]=new Modal(all[i]);
+i--;
+}
+}
+}
+
+
+}
+window.addEventListener('load',loader);
+</script>
+</head>
+<body>
+<button onclick='showIt()'>Show It</button>
+<button onclick='createModal1()'>Show Frist Modal</button>
+<button onclick='createModal2()'>Show Second Modal</button>
+<div id='ab' forModal='tRUe' size="600x300" header="Some heading" footer="Some footer" maskColor="#3355ff" modalBackgroundColor="#549933" closeButton="true" onOpen="abOpened()" onClose="abClosed()">
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+</div>
+<div id='pq' forModal='true'>
+Ujjain is the city of Gods
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// html function ends
+
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+
+}
+}
+// TMJRock part ends here
+
+function getDesignation()
+{
+let titleSpan=$$$("title");
+titleSpan.html("");
+let code=$$$("code").value();
+
+
+$$$.ajax({
+"url":"servletTwo?code="+encodeURI(code),
+"methodType":"GET",
+"success":function(responseData){
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.html(splits[1]);
+}
+
+},
+
+"failure":function(){
+alert('some problem');
+}
+});
+
+
+
+
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.innerHTML=splits[1];
+}
+
+}
+else
+{
+alert('some problem');
+}
+}
+};
+// In this example encodeURI is not required
+var requestURL="servletTwo?code="+encodeURI(code);
+xmlHttpRequest.open('GET',requestURL,true);
+xmlHttpRequest.send();
+}
+
+</script>
+</head>
+<body>
+<h1>Get type request with data Example</h1>
+Enter code <input type='text' id='code'>
+<button type='button' onclick='getDesignation()'>Get Designation</button><br>
+<br>
+Title <span id='title'></span>
+<br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// html function ends
+
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+}
+}
+// TMJRock part ends here
+
+function getDesignation()
+{
+let titleSpan=$$$("title");
+titleSpan.html("");
+let code=$$$("code").value();
+$$$.ajax({
+"url":"servletTwo",
+"data" : {
+"code" : code,
+"some1" : 10,
+"some2" : "Great"
+},
+"methodType":"GET",
+"success":function(responseData){
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.html(splits[1]);
+}
+
+},
+"failure":function(){
+alert('some problem');
+}
+});
+
+}
+
+</script>
+</head>
+<body>
+<h1>Get type request with data Example</h1>
+Enter code <input type='text' id='code'>
+<button type='button' onclick='getDesignation()'>Get Designation</button><br>
+<br>
+Title <span id='title'></span>
+<br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// html function ends
+
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+let jsonData={};
+let sendJSON=jsonObject["sendJSON"];
+if(!sendJSON) sendJSON=false;
+if((typeof sendJSON)!="boolean") throw "sendJSON property should be of boolean type in call to ajax";
+let queryString="";
+alert(sendJSON);
+if(jsonObject["data"])
+{
+if(sendJSON)
+{
+jsonData=jsonObject["data"];
+}
+else
+{
+queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+jsonData=jsonObject["data"];
+for(k in jsonData)
+{
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+alert(qsName);
+alert(qsValue);
+queryString=queryString+qsName+"="+qsValue;
+}
+alert(queryString);
+}
+
+}
+
+xmlHttpRequest.open('POST',url,true);
+if(sendJSON)
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(jsonData));
+}
+else
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xmlHttpRequest.send(queryString);
+}
+}
+}
+// TMJRock part ends here
+
+
+
+
+
+
+
+function saveEnquiry()
+{
+var firstName=$$$("firstName").value();
+var lastName=$$$("lastName").value();
+var age=$$$("age").value();
+var customer={
+"firstName" : firstName,
+"lastName" : lastName,
+"age" : age
+};
+
+var whatever=$$$("whatever");
+whatever.html("");
+
+$$$.ajax({
+"methodType":"POST",
+"url" : "servletThree",
+"data" : customer,
+"sendJSON" : false,
+"success" : function(responseData){
+/*
+var customer=JSON.parse(responseData);
+var a="First Name : "+customer.firstName+"<br>";
+a=a+"Last Name : "+customer.lastName+"<br>";
+a=a+"Age : "+customer.age;
+*/
+whatever.html(responseData);
+},
+"failure" : function(){
+alert('some problem');
+}
+});
+
+
+}
+</script>
+</head>
+<body>
+<h1>Post type request</h1>
+First name <input type='text' id='firstName'><br>
+Last name <input type='text' id='lastName'><br>
+Age <input type='text' id='age'><br>
+<button type='button' onclick='saveEnquiry()'>Save</button>
+<br>
+<div id='whatever'></div>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+
+}
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// value function ends
+
+this.fillComboBox=function(jsonObject)
+{
+if(this.element.nodeName!="SELECT") throw "fillComboBox can be called on a SELECT type object only";
+if(!jsonObject["dataSource"]) throw "dataSource property is missing in call to fillComboBox";
+let dataSource=jsonObject["dataSource"];
+
+if((typeof dataSource)!="object") throw "dataSource property should be a collection type in call to fillComboBox";
+if(!jsonObject["text"]) throw "text property is missing in call to fillComboBox";
+let text=jsonObject["text"];
+if((typeof text)!="string") throw "text property should be of string type in call to fillComboBox";
+if(!dataSource[0][text]) throw "invalid text property in call to fillComboBox";
+
+if(!jsonObject["value"]) throw "value property is missing in call to fillComboBox";
+let value=jsonObject["value"];
+if((typeof value)!="string") throw "value property should be of string type in call to fillComboBox";
+if(!dataSource[0][value]) throw "invalid value property in call to fillComboBox";
+var obj;
+let firstOption;
+if(jsonObject["firstOption"])
+{
+firstOption=jsonObject["firstOption"];
+if((typeof firstOption)!="object") throw "firstOption property should be a collection in call to fillComboBox";
+if(!firstOption["text"]) throw "text property is missing in firstOption in call to fillComboBox";
+let firstOptionText=firstOption["text"];
+if((typeof firstOptionText)!="string") throw "text property should be of string type in firstOption in call to fillComboBox";
+if(!firstOption["value"]) throw "value property is missing in firstOption in call to fillComboBox";
+let firstOptionValue=firstOption["value"];
+if((typeof firstOptionValue)!="string") throw "value property should be of string type in firstOption in call to fillComboBox";
+obj=document.createElement("option");
+obj.text=firstOptionText;
+obj.value=firstOptionValue;
+this.element.appendChild(obj);
+}
+for(var i=0;i<dataSource.length;i++)
+{
+obj=document.createElement("option");
+obj.text=dataSource[i][text];
+obj.value=dataSource[i][value];
+this.element.appendChild(obj);
+}
+
+
+
+};// fillComboBox ends
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+let jsonData={};
+let sendJSON=jsonObject["sendJSON"];
+if(!sendJSON) sendJSON=false;
+if((typeof sendJSON)!="boolean") throw "sendJSON property should be of boolean type in call to ajax";
+let queryString="";
+alert(sendJSON);
+if(jsonObject["data"])
+{
+if(sendJSON)
+{
+jsonData=jsonObject["data"];
+}
+else
+{
+queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+jsonData=jsonObject["data"];
+for(k in jsonData)
+{
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+alert(qsName);
+alert(qsValue);
+queryString=queryString+qsName+"="+qsValue;
+}
+alert(queryString);
+}
+
+}
+
+xmlHttpRequest.open('POST',url,true);
+if(sendJSON)
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(jsonData));
+}
+else
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xmlHttpRequest.send(queryString);
+}
+}
+}
+// TMJRock part ends here
+
+
+
+
+function populateDesignations()
+{
+$$$.ajax({
+"url":"servletOne",
+"methodType":"GET",
+"success":function(responseData){
+var designations=JSON.parse(responseData);
+$$$("designationCode").fillComboBox({
+"dataSource" : designations,
+"text" : "title",
+"value" : "code",
+"firstOption" : {
+"text" : "<select designation>",
+"value" : "-1"
+}
+}
+);
+},
+
+"failure":function(){
+alert('some problem');
+}
+});
+}
+window.addEventListener('load',populateDesignations);
+</script>
+</head>
+<body>
+<h1>Get type request Example</h1>
+<select id='designationCode'>
+</select>
+<br>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+var panels=[];
+var expandedIndex=-1;
+function accordianHeadingClicked(x)
+{
+if(expandedIndex!=-1) panels[expandedIndex].style.display="none";
+panels[x+1].style.display=panels[x+1].oldDisplay;
+expandedIndex=x+1;
+}
+function doit()
+{
+let accord=document.getElementById("mymy");
+let children=accord.childNodes;
+let x;
+for(x=0;x<children.length;x++)
+{
+//alert(children[x].nodeName);
+if(children[x].nodeName=="H3")
+{
+panels[panels.length]=children[x];
+}
+if(children[x].nodeName=="DIV")
+{
+panels[panels.length]=children[x];
+}
+}
+if(panels.length%2!=0) throw "Headings and division malformed to create accordian";
+for(x=0;x<panels.length;x+=2)
+{
+if(panels[x].nodeName!="H3") throw "Headings and division malformed to create accordian";
+if(panels[x+1].nodeName!="DIV") throw "Headings and division malformed to create accordian";
+}
+function createClickHandler(i)
+{
+return function(){
+accordianHeadingClicked(i);
+};
+}
+
+for(x=0;x<panels.length;x+=2)
+{
+panels[x].onclick=createClickHandler(x);
+panels[x+1].oldDisplay=panels[x+1].style.display;
+panels[x+1].style.display="none";
+}
+
+
+}
+window.addEventListener('load',doit);
+</script>
+</head>
+<body>
+<div id='mymy'>
+<h3>Heading 1</h3>
+<div>
+1 whatever whatever
+2 whatever whatever
+3 whatever whatever
+4 whatever whatever
+5 whatever whatever
+6 whatever whatever
+7 whatever whatever
+</div>
+
+<h3>Heading 2</h3>
+<div>
+11 whatever whatever
+22 whatever whatever
+33 whatever whatever
+44 whatever whatever
+55 whatever whatever
+66 whatever whatever
+77 whatever whatever
+</div>
+
+<h3>Heading 3</h3>
+<div>
+111 whatever whatever
+222 whatever whatever
+333 whatever whatever
+444 whatever whatever
+555 whatever whatever
+666 whatever whatever
+777 whatever whatever
+</div>
+
+
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+
+
+// TMJRock part starts here
+function $$$(cid){
+let element=document.getElementById(cid);
+if(!element) throw "Invalid id : "+cid;
+return new TMJRockElement(element);
+}
+
+$$$.model={
+"onStartup" : [],
+"accordians" : []
+}
+
+$$$.accordianHeadingClicked=function(accordianIndex,panelIndex)
+{
+alert(accordianIndex+","+panelIndex);
+if($$$.model.accordians[accordianIndex].expandedIndex!=-1) $$$.model.accordians[accordianIndex].panels[$$$.model.accordians[accordianIndex].expandedIndex].style.display="none";
+$$$.model.accordians[accordianIndex].panels[panelIndex+1].style.display=$$$.model.accordians[accordianIndex].panels[panelIndex+1].oldDisplay;
+$$$.model.accordians[accordianIndex].expandedIndex=panelIndex+1;
+
+}
+
+
+$$$.toAccordian=function(accord)
+{
+var panels=[];
+var expandedIndex=-1;
+let children=accord.childNodes;
+let x;
+for(x=0;x<children.length;x++)
+{
+//alert(children[x].nodeName);
+if(children[x].nodeName=="H3" ||
+children[x].nodeName=="H2" ||
+children[x].nodeName=="H1" || 
+children[x].nodeName=="H4" ||
+children[x].nodeName=="H5" ||
+children[x].nodeName=="H6")
+{
+panels[panels.length]=children[x];
+}
+if(children[x].nodeName=="DIV")
+{
+panels[panels.length]=children[x];
+}
+}
+if(panels.length%2!=0) throw "Headings and division malformed to create accordian";
+for(x=0;x<panels.length;x+=2)
+{
+if(panels[x].nodeName!="H3" &&
+panels[x].nodeName!="H2" && 
+panels[x].nodeName!="H1" && 
+panels[x].nodeName!="H4" && 
+panels[x].nodeName!="H5" && 
+panels[x].nodeName!="H6") throw "Headings and division malformed to create accordian";
+if(panels[x+1].nodeName!="DIV") throw "Headings and division malformed to create accordian";
+}
+function createClickHandler(accordianIndex,panelIndex)
+{
+return function(){
+$$$.accordianHeadingClicked(accordianIndex,panelIndex);
+};
+}
+let accordianIndex=$$$.model.accordians.length;
+for(x=0;x<panels.length;x+=2)
+{
+panels[x].onclick=createClickHandler(accordianIndex,x);
+panels[x+1].oldDisplay=panels[x+1].style.display;
+panels[x+1].style.display="none";
+}
+
+$$$.model.accordians[accordianIndex]={
+"panels" : panels,
+"expandedIndex" : -1
+};
+
+
+
+
+};
+$$$.onDocumentLoaded=function(func){
+if((typeof func)!="function") throw "Expected function, found "+(typeof func)+" in call to onDocumentLoaded";
+$$$.model.onStartup[$$$.model.onStartup.length]=func;
+}
+
+$$$.initFramework=function(){
+let allTags=document.getElementsByTagName("*");
+let i;
+let t=null;
+let a=null;
+for(i=0;i<allTags.length;i++)
+{
+t=allTags[i];
+if(t.hasAttribute("accordian"))
+{
+a=t.getAttribute("accordian");
+if(a=="true")
+{
+$$$.toAccordian(t);
+}
+}
+}
+let x=0;
+while(x<$$$.model.onStartup.length)
+{
+$$$.model.onStartup[x]();
+x++;
+}
+}
+
+
+window.addEventListener('load',function(){
+$$$.initFramework();
+});
+
+
+function TMJRockElement(element)
+{
+this.element=element;
+this.html=function(content){
+if(typeof this.element.innerHTML=="string")
+{
+if((typeof content)=="string")
+{
+this.element.innerHTML=content;
+}
+return this.element.innerHTML;
+
+}
+return null;
+};// html function ends
+this.value=function(content){
+if(typeof this.element.value)
+{
+if((typeof content)=="string")
+{
+this.element.value=content;
+}
+return this.element.value;
+}
+return null;
+};// value function ends
+
+this.fillComboBox=function(jsonObject)
+{
+if(this.element.nodeName!="SELECT") throw "fillComboBox can be called on a SELECT type object only";
+if(!jsonObject["dataSource"]) throw "dataSource property is missing in call to fillComboBox";
+let dataSource=jsonObject["dataSource"];
+
+if((typeof dataSource)!="object") throw "dataSource property should be a collection type in call to fillComboBox";
+if(!jsonObject["text"]) throw "text property is missing in call to fillComboBox";
+let text=jsonObject["text"];
+if((typeof text)!="string") throw "text property should be of string type in call to fillComboBox";
+if(!dataSource[0][text]) throw "invalid text property in call to fillComboBox";
+
+if(!jsonObject["value"]) throw "value property is missing in call to fillComboBox";
+let value=jsonObject["value"];
+if((typeof value)!="string") throw "value property should be of string type in call to fillComboBox";
+if(!dataSource[0][value]) throw "invalid value property in call to fillComboBox";
+var obj;
+let firstOption;
+if(jsonObject["firstOption"])
+{
+firstOption=jsonObject["firstOption"];
+if((typeof firstOption)!="object") throw "firstOption property should be a collection in call to fillComboBox";
+if(!firstOption["text"]) throw "text property is missing in firstOption in call to fillComboBox";
+let firstOptionText=firstOption["text"];
+if((typeof firstOptionText)!="string") throw "text property should be of string type in firstOption in call to fillComboBox";
+if(!firstOption["value"]) throw "value property is missing in firstOption in call to fillComboBox";
+let firstOptionValue=firstOption["value"];
+if((typeof firstOptionValue)!="string") throw "value property should be of string type in firstOption in call to fillComboBox";
+obj=document.createElement("option");
+obj.text=firstOptionText;
+obj.value=firstOptionValue;
+this.element.appendChild(obj);
+}
+for(var i=0;i<dataSource.length;i++)
+{
+obj=document.createElement("option");
+obj.text=dataSource[i][text];
+obj.value=dataSource[i][value];
+this.element.appendChild(obj);
+}
+
+
+
+};// fillComboBox ends
+
+
+
+
+}// class TMJRockElement ends
+
+
+
+$$$.ajax=function(jsonObject)
+{
+if(!jsonObject["url"]) throw "url property is missing in call to ajax";
+let url=jsonObject["url"];
+if((typeof url)!="string") throw "url property should be of string type in call to ajax";
+let methodType="GET";
+if(jsonObject["methodType"])
+{
+methodType=jsonObject["methodType"];
+if((typeof methodType)!="string") throw "methodType property should be of string type in call to ajax";
+methodType=methodType.toUpperCase();
+if(["GET","POST"].includes(methodType)==false) throw "methodType should be GET/POST in call to ajax";
+}
+let onSuccess=null;
+if(jsonObject["success"])
+{
+onSuccess=jsonObject["success"];
+if((typeof onSuccess)!="function") throw "success property should be a function in call to ajax";
+}
+
+let onFailure=null;
+if(jsonObject["failure"])
+{
+onFailure=jsonObject["failure"];
+if((typeof onFailure)!="function") throw "failure property should be a function in call to ajax";
+}
+if(methodType=="GET")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+if(jsonObject["data"])
+{
+let jsonData=jsonObject["data"];
+let queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+for(k in jsonData)
+{
+if(xx==0) queryString="?";
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+queryString=queryString+qsName+"="+qsValue;
+}
+url+=queryString;
+
+}
+
+xmlHttpRequest.open(methodType,url,true);
+xmlHttpRequest.send();
+} // get part ends here
+if(methodType=="POST")
+{
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+if(onSuccess) onSuccess(responseData);
+alert(responseData);
+}
+else
+{
+if(onFailure) onFailure();
+}
+}
+
+};
+let jsonData={};
+let sendJSON=jsonObject["sendJSON"];
+if(!sendJSON) sendJSON=false;
+if((typeof sendJSON)!="boolean") throw "sendJSON property should be of boolean type in call to ajax";
+let queryString="";
+alert(sendJSON);
+if(jsonObject["data"])
+{
+if(sendJSON)
+{
+jsonData=jsonObject["data"];
+}
+else
+{
+queryString="";
+let qsName;
+let qsValue;
+let xx=0;
+jsonData=jsonObject["data"];
+for(k in jsonData)
+{
+if(xx>0) queryString+="&";
+xx++;
+qsName=encodeURI(k);
+qsValue=encodeURI(jsonData[k]);
+alert(qsName);
+alert(qsValue);
+queryString=queryString+qsName+"="+qsValue;
+}
+alert(queryString);
+}
+
+}
+
+xmlHttpRequest.open('POST',url,true);
+if(sendJSON)
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(jsonData));
+}
+else
+{
+xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xmlHttpRequest.send(queryString);
+}
+}
+}
+// TMJRock part ends here
+
+/*
+$$$.onDocumentLoaded(function(){
+$$$.toAccordian("mymy");
+$$$.toAccordian("mymy1");
+});*/
+
+
+</script>
+</head>
+<body>
+<div accordian="true">
+<h3>Heading 1</h3>
+<div>
+1 whatever whatever
+2 whatever whatever
+3 whatever whatever
+4 whatever whatever
+5 whatever whatever
+6 whatever whatever
+7 whatever whatever
+</div>
+
+<h3>Heading 2</h3>
+<div>
+11 whatever whatever
+22 whatever whatever
+33 whatever whatever
+44 whatever whatever
+55 whatever whatever
+66 whatever whatever
+77 whatever whatever
+</div>
+
+<h4>Heading 3</h4>
+<div>
+111 whatever whatever
+222 whatever whatever
+333 whatever whatever
+444 whatever whatever
+555 whatever whatever
+666 whatever whatever
+777 whatever whatever
+</div>
+</div>
+
+<div id='mymy1' accordian="true">
+<h2>Cool 1</h2>
+<div>
+1 Cool cool
+2  Cool cool
+3  Cool cool
+4  Cool cool
+</div>
+
+<h6>Cool 2</h6>
+<div>
+11 Cool cool
+22 Cool cool
+33 Cool cool
+44 Cool cool
+55 Cool cool
+66 Cool cool
+</div>
+
+<h1>Cool 3</h1>
+<div>
+111 Cool cool
+222 Cool cool
+333 Cool cool
+444 Cool cool
+555 Cool cool
+</div>
+</div>
+
+
+
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+function doSomething()
+{
+let a=document.getElementById("positionA");
+let b=document.getElementById("tb");
+b.remove();
+a.appendChild(b);
+
+}
+function putItRightBack()
+{
+let a=document.getElementById("tbdv");
+let b=document.getElementById("tb");
+b.remove();
+a.appendChild(b);
+
+}
+
+</script>
+</head>
+<body>
+<button type='button' onclick='doSomething()'>change position</button>
+<button type='button' onclick='putItRightBack()'>Put it back</button>
+<div>
+<h1></h1>
+<span id='positionA'></span>
+<br></br>
+God is great.<br>
+Ujjain is city of GODS<br><br>
+<div id='tbdv'>
+<table id='tb' border='1'><tr><td>God is </td><td>Great</td></tr></table>
+</div>
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+
+<style>
+
+.xyz
+{
+width:100%;
+height:100%;
+top:0;
+left:0;
+border : 1px solid red;
+background: gray;
+position: fixed;
+opacity : 70%
+}
+.pqr
+{
+width: 400px;
+min-width: 400px;
+height: 300px;
+min-height: 300px;
+background-color: blue;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+border: 2px solid white;
+overflow: auto;
+}
+.lmn
+{
+float: right;
+padding: 2px 7px;
+}
+
+</style>
+</head>
+<body>
+Cool things
+<br>
+<br>
+<br>
+<div class="xyz">
+</div>
+<div class="pqr">
+<span class='lmn'>x</span>
+abcd<br>
+efgh<br>
+<br>
+ijklm<br>
+nopq<br>
+<br>
+rstuv<br>
+wxyz<br>
+abcd<br>
+efgh<br>
+<br>
+ijklm<br>
+nopq<br>
+<br>
+rstuv<br>
+wxyz<br>
+abcd<br>
+efgh<br>
+<br>
+ijklm<br>
+nopq<br>
+<br>
+rstuv<br>
+wxyz<br>
+
+
+
+
+</div>
+Very cool things
+</body>
+</html>.opaque
+{
+width:100%;
+height:100%;
+top:0;
+left:0;
+border : 1px solid red;
+background: gray;
+position: fixed;
+opacity : 70%
+}
+.modal
+{
+width: 400px;
+min-width: 400px;
+height: 300px;
+min-height: 300px;
+background-color: blue;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+border: 2px solid white;
+overflow: auto;
+}
+.cross
+{
+float: right;
+padding: 2px 7px;
+}
+

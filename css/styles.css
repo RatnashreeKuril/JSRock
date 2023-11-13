@@ -1,0 +1,66 @@
+.jsrock_error{
+color : red;
+padding : 5px;
+}
+.jsrock_accord_heading
+{
+cursor:pointer;
+background-image : linear-gradient(#d5d5f6,white);
+color : Black;
+border : 1px solid #eaeafb;
+border-radius : 5px;
+padding : 8px;
+color : #333333;
+font-family: sans-serif;
+}
+.jsrock_accord_panel
+{
+font-family: sans-serif;
+color : Black;
+border : 1px solid #eaeafa;
+border-radius : 5px;
+padding : 5px;
+height : 40vh;
+overflow-x : auto;
+}
+.jsrock_modalMask
+{
+width:100%;
+height:100%;
+top:0;
+left:0;
+border : 1px solid #808080;
+background: #808080;
+position: fixed;
+opacity : 40%
+}
+.jsrock_modal
+{
+width: 400px;
+min-width: 400px;
+height: 300px;
+min-height: 300px;
+background-color: blue;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+border: 2px solid #cccccc;
+border-radius : 10px;
+overflow : auto;
+box-shadow : 10px 10px 5px #8c8c8c; 
+}
+.jsrock_closeButton
+{
+float: right;
+padding: 2px 7px;
+cursor: pointer;
+margin-right : 5px;
+margin-top : 5px;
+font-size : 14pt;
+}
+
+
+

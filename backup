@@ -1,0 +1,1507 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>TMJRock</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+function showModal()
+{
+var whatever=document.getElementById('whatever');
+whatever.style.visibility='visible';
+
+}
+function closeModal()
+{
+document.getElementById('whatever').style.visibility='hidden';
+}
+</script>
+</head>
+<body>
+<div id='whatever' class='outer-division'>
+
+<div class='inner-division'>
+<img src='/TMJRock/images/cross.png' onclick='closeModal()'>
+
+</div>
+
+</div>
+
+<center>
+<button type='button' onclick='showModal()'>Login</button>
+</center>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><a href='/ajax2/eg1.html'>Example (Get type request)</a>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a>
+
+
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+// This will finally be part of TMJRock Javascript Library
+
+function $$$(parameter){
+this.parameter=parameter;
+var elementClone;
+this.fillComboBox=function(obj){
+var elementId;
+var designationComboBox=document.getElementById(this.parameter);
+var designations=obj.dataSource;
+var firstOption=obj.firstOption;
+var option;
+if(firstOption!=null)
+{
+option=document.createElement("option");
+option.value=firstOption.value;
+option.text=firstOption.text;
+option.selected=true;
+designationComboBox.appendChild(option);
+}
+
+var value=obj.value;
+var text=obj.text;
+
+
+
+for(var i=0;i<designations.length;i++)
+{
+option=document.createElement("option");
+if(value=='code') option.value=designations[i].code;
+if(text=='title') option.text=designations[i].title;
+designationComboBox.appendChild(option);
+}
+
+
+};
+
+return this;
+}
+
+$$$.modal=function(elementId){
+this.elementId=elementId;
+var element=document.getElementById(elementId);
+elementClone=element.cloneNode(true);
+element.remove();
+var modal=document.getElementById('modal');
+var whatever=document.getElementById('whatever')
+
+
+
+whatever.appendChild(elementClone);
+var opaqueWindow=document.getElementById('opaqueWindow');
+opaqueWindow.style.visibility='visible';
+
+
+
+};
+$$$.getElementId=function(){
+return this.elementId;
+};
+
+function closeModal()
+{
+var elementId=$$$.getElementId();
+var element=document.getElementById(elementId);
+element.remove();
+document.getElementById('opaqueWindow').style.visibility='hidden';
+document.body.appendChild(element);
+}
+
+
+
+
+// TMJRock Javascript Library code ends here
+
+// TMJRock user script starts here
+function showXYZ()
+{
+$$$.modal("xyz");
+}
+function showPQR()
+{
+$$$.modal("pqr");
+}
+
+// TMJRock user script ends here
+
+</script>
+</head>
+<body>
+<div id='opaqueWindow' class='outer-division'>
+
+<div class='inner-division' id='modal'>
+<img src='/TMJRock/images/cross.png' onclick='closeModal()'>
+<div id='whatever'></div>
+</div>
+
+</div>
+
+
+<h1>This is a modal example</h1>
+<button onclick='showXYZ()'>XYZ</button><br>
+<br>
+<button onclick='showPQR()'>PQR</button><br>
+<br>
+
+<div id='xyz'>
+<b>Cool</b>
+<h1>Whatever</h1>
+Great<br>
+Something something
+</div>
+
+<table id='pqr'>
+<tr><td>Whatever 1</td><td>Whatever 11</td></tr>
+<tr><td>Whatever 2</td><td>Whatever 22</td></tr>
+<tr><td>Whatever 3</td><td>Whatever 33</td></tr>
+<tr><td>Whatever 4</td><td>Whatever 44</td></tr>
+<tr><td>Whatever 5</td><td>Whatever 55</td></tr>
+<tr><td>Whatever 6</td><td>Whatever 66</td></tr>
+</table>
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+function getDesignation()
+{
+var titleSpan=document.getElementById('title');
+titleSpan.innerHTML="";
+var code=document.getElementById("code").value;
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var responseData=this.responseText;
+
+if(responseData=="INVALID")
+{
+alert("Invalid designation code");
+}
+else
+{
+var splits=responseData.split(",");
+titleSpan.innerHTML=splits[1];
+}
+
+}
+else
+{
+alert('some problem');
+}
+}
+};
+// In this example encodeURI is not required
+var requestURL="servletTwo?code="+encodeURI(code);
+xmlHttpRequest.open('GET',requestURL,true);
+xmlHttpRequest.send();
+}
+window.addEventListener('load',getDesignation);
+</script>
+</head>
+<body>
+<h1>Get type request with data Example</h1>
+Enter code <input type='text' id='code'>
+<button type='button' onclick='getDesignation()'>Get Designation</button><br>
+<br>
+Title <span id='title'></span>
+<br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+function saveEnquiry()
+{
+var firstName=document.getElementById("firstName").value;
+var lastName=document.getElementById("lastName").value;
+var age=document.getElementById("age").value;
+var customer={
+"firstName" : firstName,
+"lastName" : lastName,
+"age" : age
+};
+
+var whatever=document.getElementById("whatever");
+whatever.innerHTML="";
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+var customer=JSON.parse(this.responseText);
+var a="First Name : "+customer.firstName+"<br>";
+a=a+"Last Name : "+customer.lastName+"<br>";
+a=a+"Age : "+customer.age;
+whatever.innerHTML=a;
+
+}
+else
+{
+alert('some problem');
+}
+}
+};
+xmlHttpRequest.open('POST','servletThree',true);
+xmlHttpRequest.setRequestHeader("Content-Type","application/json");
+xmlHttpRequest.send(JSON.stringify(customer));
+}
+</script>
+</head>
+<body>
+<h1>Post type request</h1>
+First name <input type='text' id='firstName'><br>
+Last name <input type='text' id='lastName'><br>
+Age <input type='text' id='age'><br>
+<button type='button' onclick='saveEnquiry()'>Save</button>
+<br>
+<div id='whatever'></div>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+// This will finally be part of TMJRock Javascript Library
+
+function map()
+{
+var key;
+var value;
+}
+
+
+function $$$(parameter){
+this.parameter=parameter;
+this.keyValueMap=[];
+this.ptr;
+var elementClone;
+this.fillComboBox=function(obj){
+var elementId;
+var designationComboBox=document.getElementById(this.parameter);
+var designations=obj.dataSource;
+var firstOption=obj.firstOption;
+var option;
+if(firstOption!=null)
+{
+option=document.createElement("option");
+option.value=firstOption.value;
+option.text=firstOption.text;
+option.selected=true;
+designationComboBox.appendChild(option);
+}
+
+var value=obj.value;
+var text=obj.text;
+
+
+
+for(var i=0;i<designations.length;i++)
+{
+option=document.createElement("option");
+if(value=='code') option.value=designations[i].code;
+if(text=='title') option.text=designations[i].title;
+designationComboBox.appendChild(option);
+}
+
+
+};
+this.isValid=function(obj){
+var str=JSON.stringify(obj);
+this.parseData(str.substring(1,str.length-1));
+var valid=true;
+var elements;
+var error=null;
+var errorSection=null;
+var element;
+for(var k=0;k<keyValueMap.length;k++)
+{
+errorSection=null;
+var m=keyValueMap[k];
+elements=document.getElementsByName(m.key);
+
+// Input field starts here
+if(elements[0] instanceof HTMLInputElement)
+{
+error="";
+if(elements[0].type=='text')
+{
+element=elements[0];
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+if(element.value==null || element.value.trim().length==0)
+{
+error="required";
+valid=false;
+}
+}
+}
+if(m.value[i].key=="max-length")
+{
+var maxLen=m.value[i].value;
+var len=element.value.trim().length;
+if(len>maxLen)
+{
+error="max-length";
+valid=false;
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+} // inner for loop
+} // text input
+
+error="";
+if(elements[0].type=='radio')
+{
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+var checked=false;
+for(var e=0;e<elements.length;e++)
+{
+if(elements[e].checked==true) 
+{
+checked=true;
+break;
+}
+}
+if(checked==false)
+{
+error="required";
+valid=false;
+}
+
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+}
+}
+}
+} // inner for loop
+
+
+} // radio input
+
+
+/*
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+*/
+error="";
+if(elements[0].type=='checkbox')
+{
+element=elements[0];
+var displayAlert=false;
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required-state")
+{
+if(m.value[i].value=='true')
+{
+if(element.checked==false)
+{
+error="required-state";
+valid=false;
+}
+}
+} 
+if(m.value[i].key=="display-alert")
+{
+if(m.value[i].value=='true') displayAlert=true;
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+
+if(error==key)
+{
+if(displayAlert==true)
+{
+alert(value);
+}
+}
+}
+}
+} // inner for loop
+} // checkbox
+
+
+
+
+
+} 
+
+// Input field ends here
+
+// Text area starts here
+if(elements[0] instanceof HTMLTextAreaElement)
+{
+error="";
+element=elements[0];
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="required")
+{
+if(m.value[i].value=='true')
+{
+if(element.value==null || element.value.trim().length==0)
+{
+error="required";
+valid=false;
+}
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+} // inner for loop 
+}
+// Text area ends here
+
+
+// HTML select element starts here
+if(elements[0] instanceof HTMLSelectElement)
+{
+element=elements[0];
+error="";
+var invalidValue=-1;
+for(var i=0;i<m.value.length;i++)
+{
+if(m.value[i].key=="invalid")
+{
+invalidValue=m.value[i].value;
+if(element.value==invalidValue)
+{
+error="invalid";
+valid=false;
+}
+}
+if(m.value[i].key=="error-pane")
+{
+var s=m.value[i].value;
+var v=s.substring(1,s.length-1);
+errorSection=document.getElementById(v);
+errorSection.innerHTML="";
+}
+if(m.value[i].key=="error")
+{
+var val=m.value[i].value;
+for(var p=0;p<val.length;p++)
+{
+var key=val[p].key;
+var value=val[p].value;
+if(error==key)
+{
+errorSection.innerHTML=value.substring(1,value.length-1);
+element.focus();
+}
+}
+}
+
+} // inner for loop
+}
+// HTML select element ends here
+
+
+
+
+
+
+
+} // outer for loop
+
+return valid;
+};
+
+this.parseData=function(str)
+{
+		
+this.ptr=0;
+var j,i,f,ep,cm;
+i=0;
+f=-1;
+var splits=[];
+while(f<str.length)
+{
+j=str.indexOf("},",f+1);
+if(j==-1)
+{
+j=str.lastIndexOf("}")+1;
+
+}
+else j=j+1;
+
+splits[i]=str.substring(f+1,j);
+
+i++;
+f=j;
+}
+
+
+
+j=0;
+i=0;
+f=-1;
+var substr;
+for(var g=0;g<splits.length;g++)
+{
+substr=splits[g];
+j=0;
+i=0;
+f=-1;
+while(j<substr.length && f<substr.length)
+{
+j=substr.indexOf(":",f+1);
+if(substr.charAt(j+1)=="{")
+{
+ep=substr.lastIndexOf("}");
+cm=new map();
+cm.key=substr.substring(f+2,j-1);
+process(cm,substr.substring(j+2,ep));
+keyValueMap[ptr]=cm;
+ptr++;
+f=ep+1;
+}
+else
+{
+cm=new map();
+cm.key=substr.substring(f+2,j-1);
+f=substr.indexOf(",",j);
+if(f==-1) f=substr.length;
+cm.value=substr.substring(j+1,f);
+keyValueMap[ptr]=cm;
+ptr++;
+
+}
+
+}// loop ends
+
+}
+
+
+
+};
+
+
+
+
+
+return this;
+}
+
+function process(m,str)
+{
+
+
+
+var marray=[];
+var i,f,j,ep,cm;
+j=0;
+i=0;
+f=-1;
+while(j<str.length && f<str.length)
+{
+j=str.indexOf(":",f+1);
+if(str.charAt(j+1)=="{")
+{
+ep=str.lastIndexOf("}");
+cm=new map();
+cm.key=str.substring(f+2,j-1);
+process(cm,str.substring(j+2,ep));
+marray[i]=cm;
+i++;
+f=ep+1;
+}
+else
+{
+cm=new map();
+cm.key=str.substring(f+2,j-1);
+f=str.indexOf(",",j);
+if(f==-1) f=str.length;
+cm.value=str.substring(j+1,f);
+marray[i]=cm;
+i++;
+}
+m.value=marray;
+} 
+
+}
+
+
+
+
+
+$$$.modal=function(elementId){
+this.elementId=elementId;
+var element=document.getElementById(elementId);
+elementClone=element.cloneNode(true);
+element.remove();
+var modal=document.getElementById('modal');
+var whatever=document.getElementById('whatever')
+
+
+
+whatever.appendChild(elementClone);
+var opaqueWindow=document.getElementById('opaqueWindow');
+opaqueWindow.style.visibility='visible';
+
+
+
+};
+$$$.getElementId=function(){
+return this.elementId;
+};
+
+function closeModal()
+{
+var elementId=$$$.getElementId();
+var element=document.getElementById(elementId);
+element.remove();
+document.getElementById('opaqueWindow').style.visibility='hidden';
+document.body.appendChild(element);
+}
+
+
+
+
+
+// TMJRock Javascript Library code ends here
+
+// TMJRock user script starts here
+function doSomething()
+{
+return $$$("someForm").isValid({
+"nm": {
+"required" : true,
+"max-length": 20,
+"error-pane" : "nmErrorSection",
+"error":{
+"required":"Name required",
+"max-length":"Name cannot exceed 20 characters"
+}
+
+},
+
+
+
+"ad":{
+"required":true,
+"error-pane" : "adErrorSection",
+"error":{
+"required":"Address required",
+}
+
+},
+"ct":{
+"invalid":-1,
+"error-pane":"ctErrorSection",
+"error":{
+"invalid":"Select city",
+}
+},
+"gender":{
+"required": true,
+"error-pane" : "genderErrorSection",
+"error":{
+"required":"Select gender",
+}
+},
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+
+
+});
+}
+
+// TMJRock user script ends here
+
+</script>
+</head>
+<body>
+
+<h1>TMJRock Validations</h1>
+<form id='someForm' onsubmit='return doSomething()' action='whatever'>
+Name <input type='text' name='nm' id='nm'>
+<span id='nmErrorSection'></span><br>
+Address 
+<textarea name='ad' id='ad'></textarea>
+<span id='adErrorSection'></span>
+<br>
+Select City
+<select id='ct' name='ct'>
+<option value='-1'>Select city</option>
+<option value='1'>Ujjain</option>
+<option value='2'>Dewas</option>
+<option value='3'>Indore</option>
+</select><span id='ctErrorSection'></span>
+<br>
+Gender &nbsp;&nbsp;&nbsp;
+Male <input type='radio' name='gender' id='ml' value='M'>
+&nbsp;&nbsp;&nbsp;
+Female <input type='radio' name='gender' id='fe' value='F'>
+&nbsp;&nbsp;&nbsp;
+<span id='genderErrorSection'></span>
+<br>
+<input type='checkbox' name='agree' id='ag' value='Y'>
+<br>
+<Button type='submit'>Register</button>
+</form>
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+// This will finally be part of TMJRock Javascript Library
+var divisionsClone=[];
+var divisions;
+var indexExpanded=-1;
+function $$$(parameter){
+this.parameter=parameter;
+return this;
+}
+$$$.onDocumentLoaded=function(p2f){
+window.addEventListener('load',p2f);
+};
+function showDivisionHandler(index)
+{
+return function()
+{
+showDivision(index);
+};
+}
+function showDivision(index)
+{
+if(index==indexExpanded)
+{
+divisions[index].innerHTML="";
+indexExpanded=-1;
+return;
+}
+divisions[index].innerHTML=divisionsClone[index];
+for(var i=0;i<divisions.length;i++)
+{
+if(i==index) continue;
+divisions[i].innerHTML="";
+}
+indexExpanded=index;
+}
+$$$.toAccordian=function(ee){
+var element=document.getElementById(ee);
+var headings=element.getElementsByTagName("h3");
+for(var i=0;i<headings.length;i++)
+{
+headings[i].onclick=showDivisionHandler(i);
+headings[i].style.cursor='pointer';
+}
+divisions=element.getElementsByTagName("div");
+for(var i=0;i<divisions.length;i++)
+{
+divisionsClone[i]=divisions[i].innerHTML;
+divisions[i].innerHTML="";
+}
+};
+
+// TMJRock Javascript Library code ends here
+
+// TMJRock user script starts here
+
+$$$.onDocumentLoaded(function(){
+$$$.toAccordian("mymy");
+}
+);
+// TMJRock user script ends here
+
+</script>
+</head>
+<body>
+<div id='mymy'>
+<h3>Heading 1</h3>
+<div>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+Content 1 Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+</div>
+
+<h3>Heading 2</h3>
+<div>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+Content 2 Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+</div>
+
+<h3>Heading 3</h3>
+<div>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+Content 3 Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+</div>
+
+
+
+</div>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/styles.css'>
+<script>
+function doSomething()
+{
+var elements=document.querySelectorAll('[tm="yes"]');
+alert(elements);
+for(var i=0;i<elements.length;i++)
+{
+alert(elements[i].innerHTML);
+}
+}
+</script>
+</head>
+<body>
+God is great
+<div id='whatever' tm="yes">
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+Whatever whatever whatever
+</div>
+
+<span id='whatever1' tm="yes">
+Whatever whatever whatever2
+Whatever whatever whatever3
+Whatever whatever whatever4
+Whatever whatever whatever5
+Whatever whatever whatever6
+Whatever whatever whatever7
+</span>
+
+<div id='cool'>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+Cool cool cool<br>
+</div>
+
+<button type='button' onclick='doSomething()'>Do something</button>
+
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='/TMJRock/css/employees.css'>
+<script>
+// In this part the TMJRock programmer should do something
+function $$$(parameter){
+this.parameter=parameter;
+
+return this;
+}
+$$$.onDocumentLoaded=function(p2f){
+window.addEventListener('load',p2f);
+};
+var selectedRow=null;
+var currentPage=1;
+var rowsLoaded=0;
+$$$.selectRow=function(rowAddress,rowIndex)
+{
+if(selectedRow==rowAddress) return;
+if(selectedRow!=null)
+{
+selectedRow.style.background="white";
+selectedRow.style.color="black";
+}
+rowAddress.style.background="#7C7B7B";
+rowAddress.style.color="white";
+selectedRow=rowAddress;
+};
+
+
+$$$.createDynamicClickHandler=function(rowAddress,rowIndex)
+{
+return function(){
+$$$.selectRow(rowAddress,rowIndex);
+};
+};
+
+var tableBody;
+var rowSelectionEnabled;
+var model;
+var pagination;
+var pageSize;
+var rowCount;
+var columnCount;
+var pageCount;
+$$$.grid=function(elementId,jsonObj){
+rowSelectionEnabled=jsonObj.rowSelectionEnabled;
+model=jsonObj.model;
+pagination=jsonObj.pagination;
+pageSize=jsonObj.pageSize;
+rowCount=model.getRowCount();
+columnCount=model.getColumnCount();
+var table=document.createElement("table");
+table.border='1';
+var tableHeadCell;
+var element;
+var tableHead=document.createElement("thead");
+tableBody=document.createElement("tbody");
+pageCount=Math.ceil(rowCount/pageSize);
+alert(pageCount);
+var paginationSection=document.getElementById("pagination");
+var str="";
+if(pageCount==0)
+{
+str=str+"<button id="+1+" disabled type='button' onclick='$$$.loadNextPage("+1+")'>"+1+"</button>&nbsp;&nbsp;";
+}
+
+else
+{
+for(var i=0;i<pageCount;i++)
+{
+if((i+1)==currentPage)
+{
+str=str+"<button id="+(i+1)+" disabled type='button' onclick='$$$.loadNextPage("+(i+1)+")'>"+(i+1)+"</button>&nbsp;&nbsp;";
+}
+else str=str+"<button id="+(i+1)+" type='button' onclick='$$$.loadNextPage("+(i+1)+")'>"+(i+1)+"</button>&nbsp;&nbsp;";
+}
+}
+paginationSection.innerHTML=str;
+for(var i=0;i<columnCount;i++)
+{
+tableHeadCell=document.createElement("td");
+tableHeadCell.innerHTML=model.getColumnName(i);
+tableHeadCell.className=model.getColumnClass(i);
+tableHead.appendChild(tableHeadCell);
+}
+table.appendChild(tableHead);
+var tableRow;
+var tableCell;
+
+for(var r=0;r<rowCount;r++)
+{
+if(pagination && r==pageSize)
+{
+rowsLoaded=r;
+break;
+}
+tableRow=document.createElement("tr");
+tableRow.style.cursor='pointer';
+for(var c=0;c<columnCount;c++)
+{
+tableCell=document.createElement("td");
+tableCell.innerHTML=model.getData(r,c);
+tableRow.appendChild(tableCell);
+}
+if(rowSelectionEnabled) tableRow.onclick=this.createDynamicClickHandler(tableRow,r);
+tableBody.appendChild(tableRow);
+}
+table.appendChild(tableBody);
+element=document.getElementById(elementId);
+element.appendChild(table);
+};
+
+$$$.loadNextPage=function(pageNo){
+tableBody.innerHTML="";
+var count=0;
+var tableRow;
+var tableCell;
+var sp=(pageNo*pageSize)-pageSize;
+var ep=(pageNo*pageSize)-1;
+for(var r=sp;r<rowCount && r<=ep;r++,count++)
+{
+if(count==pageSize)
+{
+rowsLoaded=r;
+break;
+}
+tableRow=document.createElement("tr");
+tableRow.style.cursor='pointer';
+for(var c=0;c<columnCount;c++)
+{
+tableCell=document.createElement("td");
+tableCell.innerHTML=model.getData(r,c);
+tableRow.appendChild(tableCell);
+}
+if(rowSelectionEnabled) tableRow.onclick=this.createDynamicClickHandler(tableRow,r);
+tableBody.appendChild(tableRow);
+}
+var disabledButton=document.getElementById(currentPage);
+var buttonToBeDisabled=document.getElementById(pageNo);
+disabledButton.disabled=false;
+buttonToBeDisabled.disabled=true;
+currentPage=pageNo;
+};
+
+
+
+
+// The following code is being written by the TMJRock user
+
+function DataModel()
+{
+this.data=null;
+this.title=["S.No.","Id","Name","Designation","Edit","Delete"];
+this.getRowCount=function(){
+if(this.data==null) return 0;
+else return this.data.length;
+};
+this.getColumnCount=function(){
+return this.title.length;
+};
+this.getColumnName=function(columnIndex){
+return this.title[columnIndex];
+};
+this.getData=function(rowIndex,columnIndex){
+if(columnIndex==0) return rowIndex+1;
+if(columnIndex==1) return this.data[rowIndex].employeeId;
+if(columnIndex==2) return this.data[rowIndex].name;
+if(columnIndex==3) return this.data[rowIndex].designation;
+if(columnIndex==4) return "<a href='/stylethree/EmployeeEditForm.jsp?employeeId="+this.data[rowIndex].employeeId+"'>Edit</a>";
+if(columnIndex==5) return "<a href='/stylethree/EmployeeDeleteConfirmation.jsp?employeeId="+this.data[rowIndex].employeeId+"'>Delete</a>";
+};
+this.getColumnClass=function(columnIndex){
+if(columnIndex==0) return 'employeeGridSNOColumnTitle';
+if(columnIndex==1) return 'employeeGridIdColumnTitle';
+if(columnIndex==2) return 'employeeGridNameColumnTitle';
+if(columnIndex==3) return 'employeeGridDesignationColumnTitle';
+if(columnIndex==4) return 'employeeGridEditOptionColumnTitle';
+if(columnIndex==5) return 'employeeGridDeleteOptionColumnTitle';
+};
+
+
+// many more functions
+}
+
+var myDataModel=new DataModel();
+
+
+
+function whatever()
+{
+var employees=[{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+,{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"},{"employeeId":"A100073","name":"Manish Namdev","designationCode":344,"designation":"Consultant","dateOfBirth":"18/03/1986","gender":"M","isIndian":true,"basicSalary":6700000.00,"panNumber":"HSB523IN","aadharCardNumber":"245467190"},{"employeeId":"A100072","name":"Meera Singh","designationCode":337,"designation":"Accountant","dateOfBirth":"17/06/1998","gender":"F","isIndian":false,"basicSalary":5500000.00,"panNumber":"AKB92UB","aadharCardNumber":"29048202"}
+];
+
+
+myDataModel.data=employees;
+}
+
+function doSomething()
+{
+whatever();
+$$$.grid("someId",{
+"model":myDataModel,
+"pagination": true,
+"pageSize":10,
+"rowSelectionEnabled":true
+});
+}
+
+$$$.onDocumentLoaded(doSomething);
+</script>
+</head>
+<body>
+<h3>Employees</h3>
+<div id='someId'>
+
+</div>
+<br><br>
+<div id='pagination'>
+</div>
+
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+</head>
+<body>
+<a href='/ajax2/eg1.html'>Example (Get type request)</a><br>
+<a href='/ajax2/eg2.html'>Example (Get type request with data)</a><br>
+<a href='/ajax2/eg3.html'>Example (Post type request)</a><br>
+</body>
+</html><!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+// This will finally be part of TMJRock Javascript Library
+function $$$(parameter){
+this.parameter=parameter;
+this.fillComboBox=function(obj){
+
+var designationComboBox=document.getElementById(this.parameter);
+var designations=obj.dataSource;
+var firstOption=obj.firstOption;
+var option;
+if(firstOption!=null)
+{
+option=document.createElement("option");
+option.value=firstOption.value;
+option.text=firstOption.text;
+option.selected=true;
+designationComboBox.appendChild(option);
+}
+
+var value=obj.value;
+var text=obj.text;
+alert(value);
+alert(text);
+
+
+for(var i=0;i<designations.length;i++)
+{
+option=document.createElement("option");
+if(value=='code') option.value=designations[i].code;
+if(text=='title') option.text=designations[i].title;
+designationComboBox.appendChild(option);
+}
+
+
+};
+
+return this;
+}
+
+$$$.ajax=function(obj){
+var xmlHttpRequest=new XMLHttpRequest();
+xmlHttpRequest.onreadystatechange=function(){
+if(this.readyState==4)
+{
+if(this.status==200)
+{
+obj.success(this.responseText);
+}
+else
+{
+obj.failure();
+}
+}
+
+
+};
+xmlHttpRequest.open(obj.methodType,obj.url,true);
+xmlHttpRequest.send();
+}
+
+
+// TMJRock Javascript Library code ends here
+
+function populateDesignations()
+{
+$$$.ajax({
+"url" : "servletOne",
+"methodType" : "GET",
+"success" : function(responseData){
+var designations=JSON.parse(responseData);
+$$$("designationCode").fillComboBox({
+"dataSource" : designations,
+"text" : "title",
+"value" : "code",
+"firstOption" : {
+"text" : "<select designation>",
+"value" : "-1"
+}
+});
+
+},
+"failure" : function(){
+alert("some problem");
+}
+});
+}
+window.addEventListener('load',populateDesignations);
+</script>
+</head>
+<body>
+<h1>Get type request Example</h1>
+<select id='designationCode'>
+</select>
+<br>
+<Br>
+<a href='/something/index.html'>Home</a>
+</body>
+</html>

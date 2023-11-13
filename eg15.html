@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>JSRock Grid Prototyping</title>
+<!-- JSRock specific styling -->
+
+<style>
+
+.jsrock_tmgrid_header_division
+{
+overflow-x : hidden;
+overflow-y : hidden;
+width : 300px;
+}
+
+.jsrock_tmgrid_body_division
+{
+overflow-x : scroll;
+overflow-y : scroll;
+height : 400px;
+width : 320px;
+}
+
+
+.jsrock_tmgrid_head
+{
+border : 1px groove green;
+border-bottom : 0px;
+border-spacing : 0px;
+border-collapse : collapse;
+background : #7FFFD4;
+color : #00008B;
+width : 750px;
+}
+.jsrock_tmgrid_head td
+{
+border-left : 1px groove black;
+border-right : 1px groove black;
+border-top : 1px groove black;
+border-bottom : 0px;
+width : 50px;
+text-align : right;
+}
+.jsrock_tmgrid_head td+td
+{
+width : 100px;
+text-align : left;
+}
+.jsrock_tmgrid_head td+td+td
+{
+width : 200px;
+text-align : left;
+}
+
+.jsrock_tmgrid_head td+td+td+td
+{
+width : 200px;
+text-align : left;
+}
+
+
+.jsrock_tmgrid_head td+td+td+td+td
+{
+width : 200px;
+text-align : left;
+}
+
+
+
+.jsrock_tmgrid_body
+{
+border : 1px groove green;
+border-spacing : 0px;
+border-collapse : collapse;
+width : 750px;
+}
+.jsrock_tmgrid_body td
+{
+border : 1px groove black;
+width : 50px;
+text-align : right;
+}
+.jsrock_tmgrid_body td+td
+{
+width : 100px;
+text-align : left;
+}
+.jsrock_tmgrid_body td+td+td
+{
+width : 200px;
+text-align : left;
+}
+
+.jsrock_tmgrid_body td+td+td+td
+{
+width : 200px;
+text-align : left;
+}
+
+.jsrock_tmgrid_body td+td+td+td+td
+{
+width : 200px;
+text-align : left;
+}
+
+.jsrock_tmgrid_pagination td
+{
+width : 20px;
+text-align : center;
+}
+.jsrock_tmgrid_pagination_division
+{
+margin-top : 10px;
+}
+
+.jsrock_tmgrid_pagination_division a {
+ background-color : #7FFFD4;
+ color : #00008B;
+ padding : 4px 15px;
+text-decoration : none;
+text-transform : uppercase;
+border : 1px solid #7FFFD4;
+border-radius : 8px;
+}
+
+.jsrock_tmgrid_pagination_division a:hover {
+color : #004d33;
+background-color : #00ffaa;
+}
+
+
+
+
+</style>
+
+<!-- user specific styling -->
+<style>
+.someStyle
+{
+width : 900px;
+height : 600px;
+border : 1px solid black;
+overflow : auto;
+}
+</style>
+
+
+<script>
+class student
+{
+constructor(rollNumber,name,nameOfMother,nameOfFather)
+{
+this.rollNumber=rollNumber;
+this.name=name;
+this.nameOfMother=nameOfMother;
+this.nameOfFather=nameOfFather;
+}
+
+}
+
+class Grid
+{
+constructor(dataTableId,dataTablePaginationId,students,pageSize)
+{
+this.dataTableId=dataTableId;
+this.dataTablePaginationId=dataTablePaginationId;
+this.students=students;
+this.pageSize=pageSize;
+this.pageNumber=1;
+this.numberOfPaginationControls=5; 
+this.update();
+this.updatePagination();
+}
+
+setPage(pageNumber)
+{
+this.pageNumber=pageNumber;
+this.update();
+this.updatePagination();
+return false;
+}
+
+update()
+{
+var dataTable=document.getElementById(this.dataTableId);
+while(dataTable.rows.length>0) dataTable.deleteRow(0);
+var tr;
+var td;
+var startFromIndex=(this.pageNumber-1)*this.pageSize;
+var endAtIndex=startFromIndex+this.pageSize-1;
+if(endAtIndex>=this.students.length) endAtIndex=this.students.length-1;
+var x;
+for(x=startFromIndex;x<=endAtIndex;x++)
+{
+tr=document.createElement("tr");
+td=document.createElement("td");
+td.innerHTML=(x+1);
+tr.appendChild(td);
+td=document.createElement("td");
+td.innerHTML=this.students[x].rollNumber;
+tr.appendChild(td);
+td=document.createElement("td");
+td.innerHTML=this.students[x].name;
+tr.appendChild(td);
+td=document.createElement("td");
+td.innerHTML=this.students[x].nameOfMother;
+tr.appendChild(td);
+td=document.createElement("td");
+td.innerHTML=this.students[x].nameOfFather;
+tr.appendChild(td);
+dataTable.appendChild(tr);
+}
+
+
+
+}
+updatePagination()
+{
+
+function createPageChangeFunction(obj,pageNumber)
+{
+return function(){
+obj.setPage(pageNumber);
+};
+}
+
+var startFrom=((Math.floor((this.pageNumber-1)/this.numberOfPaginationControls)+1)-1)*this.numberOfPaginationControls+1;
+var endAt=startFrom+this.numberOfPaginationControls-1;
+var numberOfPages=Math.floor(this.students.length/this.pageSize);
+if(this.students.length%this.pageSize!=0) numberOfPages++;
+if(endAt>numberOfPages) endAt=numberOfPages;
+var dataTablePagination=document.getElementById(this.dataTablePaginationId);
+while(dataTablePagination.rows.length>0) dataTablePagination.deleteRow(0);
+var x;
+var tr;
+var td;
+var anchor;
+tr=document.createElement("tr");
+
+if(startFrom>1)
+{
+td=document.createElement("td");
+anchor=document.createElement("a");
+anchor.text="prev";
+anchor.href='javascript:void(0)';
+anchor.onclick=createPageChangeFunction(this,startFrom-1);
+td.appendChild(anchor);
+tr.appendChild(td);
+}
+
+for(x=startFrom;x<=endAt;x++)
+{
+td=document.createElement("td");
+if(x==this.pageNumber)
+{
+td.innerHTML="<b>"+x+"</b>";
+}
+else
+{
+anchor=document.createElement("a");
+anchor.text=x;
+anchor.href='javascript:void(0)';
+anchor.onclick=createPageChangeFunction(this,x);
+td.appendChild(anchor);
+}
+tr.appendChild(td);
+}
+if(endAt<numberOfPages)
+{
+td=document.createElement("td");
+anchor=document.createElement("a");
+anchor.text="next";
+anchor.href='javascript:void(0)';
+anchor.onclick=createPageChangeFunction(this,endAt+1);
+td.appendChild(anchor);
+tr.appendChild(td);
+}
+dataTablePagination.appendChild(tr);
+}
+}
+
+var model={
+"grid" : null
+};
+
+function loader()
+{
+
+var jsrock_tmgrid_header_division=document.querySelector(".jsrock_tmgrid_header_division");
+var jsrock_tmgrid_body_division=document.querySelector(".jsrock_tmgrid_body_division");
+
+jsrock_tmgrid_body_division.addEventListener('scroll',function(){
+jsrock_tmgrid_header_division.scrollLeft=jsrock_tmgrid_body_division.scrollLeft;
+
+});
+
+
+var i;
+var students=new Array();
+for(i=101;i<=1000;i++)
+{
+students.push(new student(i,i+"Name",i+"Mother",i+"Father"));
+}
+model.grid=new Grid('dataTable','dataTablePagination',students,35);
+
+
+}
+window.addEventListener('load',loader);
+
+</script>
+
+</head>
+<body>
+<div class='someStyle'>
+<div class="jsrock_tmgrid_header_division">
+<table class='jsrock_tmgrid_head'>
+<tr>
+<td>S.No.</td>
+<td>Name</td>
+<td>City</td>
+<td>Mother</td>
+<td>Father</td>
+</tr>
+</table>
+</div>
+
+<div class='jsrock_tmgrid_body_division'>
+<table class='jsrock_tmgrid_body' id='dataTable'>
+</table>
+</div>
+
+<div class='jsrock_tmgrid_pagination_division'>
+<table class='jsrock_tmgrid_pagination' id='dataTablePagination'>
+
+</table>
+</div>
+
+
+</div>
+</body>
+</html>

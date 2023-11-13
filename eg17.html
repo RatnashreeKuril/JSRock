@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<link rel='stylesheet' type='text/css' href='css/styles.css'>
+<script src='js/JSRock.js'></script>
+<script>
+// JSRock user script starts here
+function test()
+{
+var isValid=$$$("someForm").isValid({
+"nm": {
+"required" : true,
+"max-length": 20,
+"error-pane" : "nmErrorSection",
+"error":{
+"required":"Name required",
+"max-length":"Name cannot exceed 20 characters"
+}
+
+},
+
+
+
+"ad":{
+"required":true,
+"error-pane" : "adErrorSection",
+"error":{
+"required":"Address required",
+}
+
+},
+"ct":{
+"invalid":-1,
+"error-pane":"ctErrorSection",
+"error":{
+"invalid":"Select city",
+}
+},
+"gender":{
+"required": true,
+"error-pane" : "genderErrorSection",
+"error":{
+"required":"Select gender",
+}
+},
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+
+
+});
+
+alert("Is valid : "+isValid);
+}
+
+
+function doSomething()
+{
+return $$$("someForm").isValid({
+"nm": {
+"required" : true,
+"max-length": 20,
+"error-pane" : "nmErrorSection",
+"error":{
+"required":"Name required",
+"max-length":"Name cannot exceed 20 characters"
+}
+
+},
+
+"ad":{
+"required":true,
+"error-pane" : "adErrorSection",
+"error":{
+"required":"Address required",
+}
+
+},
+"ct":{
+"invalid":-1,
+"error-pane":"ctErrorSection",
+"error":{
+"invalid":"Select city",
+}
+},
+"gender":{
+"required": true,
+"error-pane" : "genderErrorSection",
+"error":{
+"required":"Select gender",
+}
+},
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+
+
+});
+}
+
+// JSRock user script ends here
+
+</script>
+</head>
+<body>
+
+<h1>JSRock Validations</h1>
+<form id='someForm' onsubmit='return doSomething()' action='whatever'>
+Name <input type='text' name='nm' id='nm'>
+<span class='jsrock_error' id='nmErrorSection'></span><br><br>
+Address 
+<textarea name='ad' id='ad'></textarea>
+<span class='jsrock_error' id='adErrorSection'></span>
+<br><br>
+Select City
+<select id='ct' name='ct'>
+<option value='-1'>Select city</option>
+<option value='1'>Ujjain</option>
+<option value='2'>Dewas</option>
+<option value='3'>Indore</option>
+</select><span class='jsrock_error' id='ctErrorSection'></span>
+<br><br>
+Gender &nbsp;&nbsp;&nbsp;
+Male <input type='radio' name='gender' id='ml' value='M'>
+&nbsp;&nbsp;&nbsp;
+Female <input type='radio' name='gender' id='fe' value='F'>
+&nbsp;&nbsp;&nbsp;
+<span class='jsrock_error' id='genderErrorSection'></span>
+<br><br>
+<input type='checkbox' name='agree' id='ag' value='Y'>
+<br><br>
+<Button type='submit'>Register</button>
+<Button type='button' onclick='test()'>Test</button>
+</form>
+
+</body>
+</html>

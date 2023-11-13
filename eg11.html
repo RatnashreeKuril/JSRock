@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<style>
+.modalMask
+{
+width:100%;
+height:100%;
+top:0;
+left:0;
+border : 1px solid red;
+background: gray;
+position: fixed;
+opacity : 70%
+}
+.modal
+{
+width: 400px;
+min-width: 400px;
+height: 300px;
+min-height: 300px;
+background-color: blue;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+border: 2px solid white;
+overflow: auto;
+}
+.closeButton
+{
+float: right;
+padding: 2px 7px;
+cursor: pointer;
+}
+
+</style>
+
+<script>
+
+function showIt()
+{
+var d=document.createElement("div");
+d.classList.add("xyz");
+document.body.appendChild(d);
+var p=document.createElement("div");
+p.classList.add("pqr");
+document.body.appendChild(p);
+var s=document.createElement("span");
+s.classList.add("lmn");
+var t=document.createTextNode("x");
+s.appendChild(t);
+p.appendChild(s);
+}
+var ds={"modals" : []};
+
+function Modal(jsonObject)
+{
+var objectAddress=this;
+this.onOpen=null;
+this.onClose=null;
+this.contentId=jsonObject["contentId"];
+if(jsonObject["element"]) this.element=jsonObject["element"];
+
+var modalMaskDivision=document.createElement("div");
+modalMaskDivision.classList.add("modalMask");
+if(jsonObject["maskColor"]) modalMaskDivision.style.background=jsonObject["maskColor"];
+
+var modalDivision=document.createElement("div");
+modalDivision.classList.add("modal");
+if(jsonObject["modalBackgroundColor"]) modalDivision.style.background=jsonObject["modalBackgroundColor"];
+if(jsonObject["size"])
+{
+var splits=jsonObject["size"].split("x");
+var width=splits[0]+"px";
+var height=splits[1]+"px";
+modalDivision.style.width=width;
+modalDivision.style.height=height;
+}
+
+if(jsonObject["closeButton"])
+{
+var e=jsonObject["closeButton"];
+if(e==true)
+{
+
+var closeButtonSpan=document.createElement("span");
+closeButtonSpan.classList.add("closeButton");
+var closeButtonMarker=document.createTextNode("x");
+closeButtonSpan.appendChild(closeButtonMarker);
+modalDivision.appendChild(closeButtonSpan);
+closeButtonSpan.onclick=function(){
+
+contentReference.remove();
+modalDivision.remove();
+modalMaskDivision.remove();
+if(contentParentReference.children.length==contentIndex)
+{
+
+contentParentReference.appendChild(contentReference);
+}
+else
+{
+contentParentReference.insertBefore(contentReference,contentParentReference.children[contentIndex]);
+}
+if(objectAddress.onClose) objectAddress.onClose();
+};
+
+
+}
+
+}
+
+var contentReference=null;
+for(var i=0;i<ds.modals.length;i++)
+{
+contentReference=ds.modals[i]["element"];
+if(contentReference.hasAttribute("id"))
+{
+if(contentReference.getAttribute("id")==this.contentId)
+{
+alert(contentReference.getAttribute("id"));
+modalDivision.append(contentReference);
+}
+}
+
+
+}
+
+
+
+
+
+
+
+this.show=function(){
+document.body.appendChild(modalMaskDivision);
+document.body.appendChild(modalDivision);
+/*
+if(this.onOpen) this.onOpen();
+*/
+
+
+};
+
+
+
+}// Modal class ends here
+
+function abOpened()
+{
+alert("Modal with ab opened");
+}
+function abClosed()
+{
+alert("Modal with pq opened");
+}
+
+function createModal1() 
+{
+var modal=new Modal();
+modal.onOpen=function(){
+alert("Modal with ab opened");
+};
+modal.onClose=function(){
+alert("Modal with ab closed");
+};
+modal.show();
+}
+function createModal2()
+{
+var modal=new Modal("pq");
+modal.onOpen=function(){
+alert("Modal with pq opened");
+};
+modal.onClose=function(){
+alert("Modal with pq closed");
+};
+modal.show();
+}
+
+function loader()
+{
+var elements=document.getElementsByTagName("*");
+alert(elements.length);
+var t=null;
+var modal;
+var id;
+for(var i=0;i<elements.length;i++)
+{
+t=elements[i];
+//alert(t);
+//if(t.hasAttribute("id")) alert(t.getAttribute("id"));
+if(t.hasAttribute("forModal"))
+{
+if(t.getAttribute("forModal")=="true")
+{
+if(t.hasAttribute("id")) id=t.getAttribute("id");
+modal=new Modal({
+"contentId" : id,
+"element" : t
+});
+
+ds.modals[ds.modals.length]=modal;
+t.remove();
+i--;
+}
+}
+}
+/*
+for(var i=0;i<ds.modals.length;i++)
+{
+alert(ds.modals[i].element["id"]);
+ds.modals[i].element.remove();
+}
+*/
+}
+
+window.addEventListener('load',loader);
+
+</script>
+</head>
+<body>
+<button onclick='showIt()'>Show It</button>
+<button onclick='createModal1()'>Show Frist Modal</button>
+<button onclick='createModal2()'>Show Second Modal</button>
+<div id='ab' forModal='true' size="200x300" header="Some heading" footer="Some footer" maskColor="#3355ff" modalBackgroundColor="#549933" closeButton="false">
+God is great
+</div>
+<div id='pq' forModal='true'>
+Ujjain is the city of Gods
+</div>
+</body>
+</html>
