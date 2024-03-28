@@ -171,4 +171,4 @@ $$$.toAccordian("accord1");
 </body>
 ```
 **Output :** 
-
+<img src="/screenshots/accordion.png">
