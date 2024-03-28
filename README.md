@@ -172,3 +172,186 @@ $$$.toAccordian("accord1");
 ```
 **Output :** 
 <img src="/screenshots/accordion.png">
+## Creating modal
+```
+<script>
+function abBeforeOpening()
+{
+alert("Modal with ab is about to be opened");
+return true;
+}
+function abOpened()
+{
+alert("Modal with ab opened");
+}
+function abBeforeClosing()
+{
+alert("Modal with ab is about to be closed");
+return true;
+}
+function abClosed()
+{
+alert("Modal with ab closed");
+}
+function createModal1()
+{
+$$$.modals.show("modal1");
+} 
+</script>
+</head>
+<body>
+<button onclick='createModal1()'>Show First Modal</button>
+<div id='modal1' style='display:none' forModal='true' size="750x400" header="Some heading" footer="Some footer" maskColor="#808080" modalBackgroundColor="#E6E6FA" closeButton="true" 
+beforeOpening="abBeforeOpening()"
+afterOpening="abOpened()"
+beforeClosing="abBeforeClosing()"
+afterClosing="abClosed()">
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+God is great<br>
+</div>
+<button onclick='xyz()'>Cool button</button>
+</body>
+```
+**Output :**
+<img src='screenshots/modal.png'>
+ 
+
+**$$$.modals.show(modal_id) :** Call this function to display a modal. The function takes the ID of the element to be converted into a modal as an argument.
+
+**forModal :** (Optional)
+
+Specify this as true if the modal element is intended to exist outside of the DOM, solely for presentation within the modal interface.
+
+**size** : (Optional)
+
+The desired size of modal can be specified against the size attribute in the following formate : width x height
+
+**header** : (Optional)
+
+To display header in the modal use this attribute.
+
+**footer** : (Optional)
+
+To display footer in the modal use this attribute.
+
+**maskColor** : (Optional)
+
+Use this attribute to specify background color of the modal window .
+
+**modalBackgroundColor** : (Optional)
+
+Use this attribute to specify the color of the modal window.
+
+**closeButton** : (Optional)
+
+Set this attribute true if a close button is intended to be displayed on the modal. By default this attribute is set to false.
+
+**beforeOpening** : (Optional)
+
+Function to be called before displaying the modal.
+
+**afterOpening** : (Optional)
+
+Function to be called after displaying the modal.
+
+**beforeClosing** : (Optional)
+
+Function to be called before closing the modal.
+
+**afterClosing** : (Optional)
+
+Function to be called after closing the modal.
+## Form validation 
+```
+<script>
+function doSomething()
+{
+return $$$("someForm").isValid({
+"nm": {
+"required" : true,
+"max-length": 20,
+"error-pane" : "nmErrorSection",
+"error":{
+"required":"Name required",
+"max-length":"Name cannot exceed 20 characters"
+}
+},
+"ad":{
+"required":true,
+"error-pane" : "adErrorSection",
+"error":{
+"required":"Address required",
+}
+},
+"ct":{
+"invalid":-1,
+"error-pane":"ctErrorSection",
+"error":{
+"invalid":"Select city",
+}
+},
+"gender":{
+"required": true,
+"error-pane" : "genderErrorSection",
+"error":{
+"required":"Select gender",
+}
+},
+"agree":{
+"required-state":true,
+"display-alert":true,
+"error":{
+"required-state":"Select I Agree checkbox",
+}
+}
+});
+}
+// JSRock user script ends here
+</script>
+</head>
+<body>
+<h1>JSRock Validations</h1>
+<form id='someForm' onsubmit='return doSomething()' action='whatever'>
+Name <input type='text' name='nm' id='nm'>
+<span id='nmErrorSection'></span><br><br>
+Address 
+<textarea name='ad' id='ad'></textarea>
+<span id='adErrorSection'></span>
+<br><br>
+Select City
+<select id='ct' name='ct'>
+<option value='-1'>Select city</option>
+<option value='1'>Ujjain</option>
+<option value='2'>Dewas</option>
+<option value='3'>Indore</option>
+</select><span id='ctErrorSection'></span>
+<br><br>
+Gender &nbsp;&nbsp;&nbsp;
+Male <input type='radio' name='gender' id='ml' value='M'>
+&nbsp;&nbsp;&nbsp;
+Female <input type='radio' name='gender' id='fe' value='F'>
+&nbsp;&nbsp;&nbsp;
+<span id='genderErrorSection'></span>
+<br><br>
+<input type='checkbox' name='agree' id='ag' value='Y'>
+<br><br>
+<Button type='submit'>Register</button>
+</form>
+```
+**isValid(obj)**\
+**obj :** JSON Object
+Specify the validations for each form element in the JSON object. 
+
+
